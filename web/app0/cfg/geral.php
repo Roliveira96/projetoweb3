@@ -3,7 +3,7 @@
 const APLICACAO_NOME = 'APP 0';
 
 // Se a URL_RAIZ mudar, verifique arquivo .htaccess
-const URL_RAIZ = '/web3/app0/';
+const URL_RAIZ = '/web/app0/';
 
 // Os caminhos sempre devem terminar com '/'
 

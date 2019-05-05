@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?= URL_CSS . 'bootstrap.min.css' ?>">
     <link rel="stylesheet" href="<?= URL_CSS . 'geral.css' ?>">
 </head>
-<body>
+<body bgcolor="#8b0000">
 
 <?php $this->imprimirConteudo() ?>
 
