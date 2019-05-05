@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f73a3621-72d0-480a-9ff1-542b47222a49" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/projeto/mvc/Controlador/LoginControlador.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/projeto/mvc/Visao/login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/projeto/cfg/rotas.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/projeto/cfg/rotas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/projeto/mvc/Visao/mensagens/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/projeto/mvc/Visao/mensagens/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/projeto/publico/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/projeto/publico/css/footer.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -287,7 +283,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557080847930</updated>
-      <workItem from="1557080849388" duration="6902000" />
+      <workItem from="1557080849388" duration="7200000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Primeiro commit&quot;">
       <created>1557081180002</created>
@@ -331,15 +327,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557086046245</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="&quot;Foi crianda a classe LoginControlador e feito configurações nas rotas&quot;">
+      <created>1557088159000</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557088159000</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6902000" />
+    <option name="totallyTimeSpent" value="7200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="44" y="623" width="1322" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -408,7 +410,8 @@
     <MESSAGE value="&quot;Commit de configuração do projeto e da pasta do projeto&quot;" />
     <MESSAGE value="&quot;Adicinados os JS e CSS do materialize e configuração dos mesmo.&quot;" />
     <MESSAGE value="&quot;Alguns teste dp framework de css e php&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Alguns teste dp framework de css e php&quot;" />
+    <MESSAGE value="&quot;Foi crianda a classe LoginControlador e feito configurações nas rotas&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Foi crianda a classe LoginControlador e feito configurações nas rotas&quot;" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/app0/cfg/geral.php">
