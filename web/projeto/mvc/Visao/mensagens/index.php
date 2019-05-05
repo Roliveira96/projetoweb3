@@ -12,7 +12,7 @@
             <button type="submit" class="btn btn-default">Enviar mensagem</button>
         </form>
     </div>
-
+zgsadhdaf
     <h2>Mensagens</h2>
     <?php foreach ($mensagens as $mensagem) : ?>
         <p>
