@@ -7,13 +7,15 @@ class LoginControlador extends Controlador
 {
     public function loginPage()
     {
-var_dump("teste");
-        $this->visao('login/index.php');
-        $this->redirecionar(URL_RAIZ.'login');
+
+    $this->visao('login/index.php');
+    
     }
 
     public function armazenar()
     {
+
+        var_dump("teste");
         $mensagem = new Mensagem($_POST['usuario'], $_POST['texto']);
         $mensagem->salvar();
         $this->redirecionar(URL_RAIZ);
