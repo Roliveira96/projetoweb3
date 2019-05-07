@@ -3,12 +3,12 @@ namespace Controlador;
 
 use \Modelo\Mensagem;
 
-class LoginControlador extends Controlador
+class CadastroUsuarioControlador extends Controlador
 {
-    public function loginPage()
+    public function index()
     {
 
-    $this->visao('login/index.php');
+    $this->visao('cadastroUsuario/index.php');
 
     }
 
