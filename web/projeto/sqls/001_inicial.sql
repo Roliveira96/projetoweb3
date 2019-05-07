@@ -1,4 +1,4 @@
-CREATE DATABASE app1 COLLATE 'utf8_unicode_ci';
+create database projeto collate 'utf8_unicode_ci' ;
 
 CREATE TABLE mensagens (
     id INT NOT NULL AUTO_INCREMENT ,

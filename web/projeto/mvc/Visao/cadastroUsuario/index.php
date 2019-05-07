@@ -1,5 +1,5 @@
 
-<h1 class="hide">home_1991</h1>
+<h1 class="hide">cod_1991</h1>
 
 
 <div class="row">
@@ -14,7 +14,7 @@
                 <div class="center-block site">
 
 
-                    <form action="<?= URL_RAIZ ?>" method="post" class="form-inline pull-left">
+                    <form action="<?= URL_RAIZ  . 'cadastroUsuario'?>" method="post" class="form-inline pull-left">
 
                         <div class="form ">
                             <img class="img_login" src="<?= URL_IMG . 'login.png' ?>">
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="input-field col s12 m6">
-                                <input id="senhaa" name="senhaa" type="password" class="validate">
+                                <input id="senhaa" name="senhare" type="password" class="validate">
                                 <label for="password">Repita a senha</label>
                             </div>
                         </div>

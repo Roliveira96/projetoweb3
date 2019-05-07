@@ -1,7 +1,7 @@
 <?php
 namespace Controlador;
 
-use \Modelo\Mensagem;
+use \Modelo\Usuario;
 
 class LoginControlador extends Controlador
 {
@@ -12,12 +12,17 @@ class LoginControlador extends Controlador
 
     }
 
-    public function armazenar()
+
+    public function login()
     {
 
-        var_dump("teste");
-        $mensagem = new Mensagem($_POST['usuario'], $_POST['texto']);
-        $mensagem->salvar();
-        $this->redirecionar(URL_RAIZ);
+        var_dump("Email: " . $_POST['usuario']);
+        var_dump("Senha: " . $_POST['senha']);
+
+        $usuario = new Usuario();
+
+        $usuario->login($_POST['usuario'] , $_POST['senha'] );
+
+
     }
 }

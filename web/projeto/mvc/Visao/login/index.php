@@ -1,4 +1,4 @@
-<h1 class="hide">home_1992</h1>
+<h1 class="hide">cod_1992</h1>
 
 
 
@@ -14,7 +14,7 @@
                 <div class="center-block site">
 
 
-                        <form action="<?= URL_RAIZ ?>" method="post" class="form-inline pull-left">
+                        <form action="<?= URL_RAIZ . 'login'?>" method="post" class="form-inline pull-left">
                             
                             
                             <div class="form ">
@@ -25,7 +25,7 @@
                                        placeholder="Email">
                             </div>
                             <div class="form">
-                                <input id="texto" name="texto"   type="password" placeholder="Senha">
+                                <input id="texto" name="senha"   type="password" placeholder="Senha">
                             </div>
 
                             <div class="center form" >

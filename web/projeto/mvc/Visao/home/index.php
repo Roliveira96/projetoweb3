@@ -1,4 +1,4 @@
-<h1 class="hide">home_1990</h1>
+<h1 class="hide">cod_1990</h1>
 <a class="sp-circle-link" href="<?= URL_RAIZ .'login' ?>">PLAY</a>
 
     <div class="sp-container">

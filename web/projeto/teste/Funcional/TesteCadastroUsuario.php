@@ -10,7 +10,7 @@ class TesteCadastroUsuario extends Teste
     public function testeAcessar()
     {
         $resposta = $this->get(URL_RAIZ . 'cadastroUsuario');
-        $this->verificarContem($resposta, 'home_1991');
+        $this->verificarContem($resposta, 'cod_1991');
 
 
     }
@@ -18,7 +18,7 @@ class TesteCadastroUsuario extends Teste
     public function testeAcessar1()
     {
         $resposta = $this->get(URL_RAIZ . 'cadastroUsuario');
-        $this->verificarNaoContem($resposta, 'home_1992');
+        $this->verificarNaoContem($resposta, 'cod_1992');
 
 
     }

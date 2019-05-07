@@ -17,7 +17,6 @@ class Usuario extends Modelo
 
     public function __construct(
         $nome,
-        $senha,
         $sobrenome,
         $email,
         $senha = null,
@@ -33,14 +32,25 @@ class Usuario extends Modelo
 
     public function salvar()
     {
+        var_dump("entrou");
         DW3BancoDeDados::getPdo()->beginTransaction();
         $comando = DW3BancoDeDados::prepare(self::INSERIR);
-        $comando->bindValue(1, $this->usuario, PDO::PARAM_STR);
-        $comando->bindValue(2, $this->texto, PDO::PARAM_STR);
+        $comando->bindValue(1, $this->nome, PDO::PARAM_STR);
+        $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
+        $comando->bindValue(3, $this->email, PDO::PARAM_STR);
+        $comando->bindValue(4, $this->senha, PDO::PARAM_STR);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
+
+
+    public static function login($email,$senha){
+
+        /// Fazer depois...
+
+    }
+
 
     public static function buscarTodos()
     {
