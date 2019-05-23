@@ -3,7 +3,7 @@
 const APLICACAO_NOME = 'Reclame UTFPR';
 
 // Se a URL_RAIZ mudar, verifique arquivo .htaccess
-const URL_RAIZ = '/web3/app3/';
+const URL_RAIZ = '/web/app3/';
 
 // Os caminhos sempre devem terminar com '/'
 

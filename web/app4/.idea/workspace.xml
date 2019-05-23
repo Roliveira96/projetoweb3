@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="55dd17f3-df78-483c-b3fc-832e7ae6f42f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/app4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../projeto/publico/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app5/mvc/Controlador/RelatorioVendaControlador.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app5/mvc/Controlador/RelatorioVendaControlador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/cfg/banco.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/cfg/banco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/cfg/geral.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/cfg/geral.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/cfg/rotas.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/cfg/rotas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Controlador/Controlador.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Controlador/Controlador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Controlador/PedidoControlador.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Controlador/PedidoControlador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Modelo/Modelo.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Modelo/Modelo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Modelo/Pedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Modelo/Pedido.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Visao/pedidos/criar.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Visao/pedidos/criar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Visao/pedidos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Visao/pedidos/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/mvc/Visao/templates/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/mvc/Visao/templates/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/css/bootstrap-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/css/bootstrap-theme.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/css/geral.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/css/geral.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/js/jquery-3.1.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/js/jquery-3.1.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/publico/js/npm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/publico/js/npm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/sqls/001_inicial.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/sqls/001_inicial.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/testar.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/testar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/teste/Funcional/TesteLancarPedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/teste/Funcional/TesteLancarPedido.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/teste/Funcional/TesteListagem.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/teste/Funcional/TesteListagem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/teste/Teste.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/teste/Teste.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex2/teste/Unitario/TestePedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/../ex2/teste/Unitario/TestePedido.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/mvc/Visao/cadastroUsuario/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/mvc/Visao/cadastroUsuario/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/mvc/Visao/templates/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/mvc/Visao/templates/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/publico/css/a.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/publico/css/a.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/publico/css/cores.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/publico/css/cores.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/publico/css/geral.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/publico/css/geral.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/publico/img/login.png" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/publico/img/login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projeto/sqls/Usuario criando teste não usar.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../projeto/sqls/Usuario criando teste não usar.sql" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/Controlador/LoginControlador.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mvc/Modelo/Usuario.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="50" column="5" selection-start-line="49" selection-start-column="1" selection-end-line="52" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/app4.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="44" />
+    <option name="width" value="1396" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55dd17f3-df78-483c-b3fc-832e7ae6f42f" name="Default Changelist" comment="" />
+      <created>1558016094066</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558016094066</updated>
+      <workItem from="1558016095998" duration="2088000" />
+      <workItem from="1558272474832" duration="77000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2165000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="44" y="0" width="1322" height="743" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24373041" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.32814527" />
+      <window_info anchor="bottom" id="Messages" order="5" weight="0.32899022" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.32899022" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mvc/Controlador/LoginControlador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/Modelo/Usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="50" column="5" selection-start-line="49" selection-start-column="1" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

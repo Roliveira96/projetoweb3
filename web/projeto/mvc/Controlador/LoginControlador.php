@@ -28,8 +28,8 @@ class LoginControlador extends Controlador
             $this->redirecionar(URL_RAIZ );
             var_dump("deu certo");
         } else {
-           // $this->setErros(['login' => 'Usuário ou senha inválido.']);
-          //  $this->visao('login/criar.php');
+           $this->setErros(['login' => 'Usuário ou senha inválido.']);
+            $this->visao('login/index.php');
             var_dump("deu ruim");
         }
 

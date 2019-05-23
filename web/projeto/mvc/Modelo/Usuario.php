@@ -71,8 +71,7 @@ class Usuario extends Modelo
             );
             $objeto->senha = $registro['senha'];
         }
-        var_dump($objeto->getEmail());
-        var_dump($objeto->getSenha());
+
         return $objeto;
     }
 
