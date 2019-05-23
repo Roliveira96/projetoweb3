@@ -6,8 +6,9 @@ use \Framework\DW3BancoDeDados;
 
 class Usuario extends Modelo
 {
-    const BUSCAR_TODOS = 'SELECT id, texto, usuario FROM mensagens ORDER BY id';
-    const INSERIR = 'INSERT INTO usuario(nome, sobrenome, email, senha) VALUES (?, ? , ? , ?)';
+    const BUSCAR_TODOS = 'SELECT id, texto, usuarios FROM mensagens ORDER BY id';
+    const INSERIR = 'INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES (?, ? , ? , ?)';
+    const BUSCAR_POR_EMAIL = 'SELECT * FROM usuarios WHERE email = ? LIMIT 1';
 
     private $id;
     private $nome;
@@ -19,13 +20,13 @@ class Usuario extends Modelo
         $nome,
         $sobrenome,
         $email,
-        $senha = null,
+        $senha ,
         $id = null
     ) {
-       $this->nome = $nome;
-       $this->sobrenome = $sobrenome;
-       $this->email = $email;
-       $this->senha = $senha;
+        $this->nome = $nome;
+        $this->sobrenome = $sobrenome;
+        $this->email = $email;
+        $this->senha = $senha;
         $this->id = $id;
     }
 
@@ -49,8 +50,44 @@ class Usuario extends Modelo
 
         /// Fazer depois...
 
+
+
     }
 
+    public static function buscarEmail($email)
+    {
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_POR_EMAIL);
+        $comando->bindValue(1, $email, PDO::PARAM_STR);
+        $comando->execute();
+        $objeto = null;
+        $registro = $comando->fetch();
+        if ($registro) {
+            $objeto = new Usuario(
+                '',
+                '',
+                $registro['email'],
+                null,
+                $registro['id_usuario']
+            );
+            $objeto->senha = $registro['senha'];
+        }
+        var_dump($objeto->getEmail());
+        var_dump($objeto->getSenha());
+        return $objeto;
+    }
+
+    public function verificarSenha($senhaPlana)
+    {
+
+        //  return password_verify($senhaPlana, $this->senha);
+        var_dump("senha Plana --> " .$this->senha);
+        var_dump("senha  --> " .$senhaPlana);
+
+        if($this->senha == $senhaPlana)
+        return true;
+        else
+            false;
+    }
 
     public static function buscarTodos()
     {
@@ -65,4 +102,23 @@ class Usuario extends Modelo
         }
         return $objetos;
     }
+
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getSenha()
+    {
+        return $this->senha;
+    }
+
+
+
 }

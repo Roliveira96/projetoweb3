@@ -20,18 +20,42 @@
 
 
 </head>
-<body >
+<body>
 <header>
 
-    <nav> <div class="container">
-        <div class="nav-wrapper">
 
-            <a href="#" class="brand-logo ">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="<?= URL_RAIZ  ?>">home</a></li>
-                <li><a href="<?= URL_RAIZ .'login' ?>">login</a></li>
-                <li><a href="collapsible.html">questões</a></li>
-            </ul>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="images/office.jpg">
+                </div>
+                <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        <li><a href="#!">Second Link</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+
+                <a href="#" class="brand-logo ">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="<?= URL_RAIZ ?>">home</a></li>
+                    <li><a href="<?= URL_RAIZ . 'login' ?>">login</a></li>
+                    <li><a href="collapsible.html">questões</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -50,16 +74,17 @@
 <footer class=" page-footer">
 
 
-        <div class="footer-copyright">
-            <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
+    </div>
 
-    </footer>
-
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript" src="<?= URL_JS . 'materialize.min.js' ?>"></script>
+<script type="text/javascript" src="<?= URL_JS . 'main.js' ?>"></script>
 </body>
 </html>
 

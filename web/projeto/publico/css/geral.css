@@ -4,7 +4,22 @@ nav
     background-color: black;
 }
 
-<!-- video -->
+
+.error{
+    background-color: rgba(255, 100, 102, 0.37) !important;
+    color:  red !important;
+}
+
+
+
+textarea:focus , text:focus , input:focus{
+    color : black !important;
+}
+
+input , select , textarea {
+    color : black !important;
+}
+
 
 * {
     -webkit-box-sizing: border-box;

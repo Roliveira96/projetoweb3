@@ -7,7 +7,7 @@
     <h6 class="center">Por favor entre com suas informações corretamente</h6>
 
 
-    <div class="col offset-s3 s6  offset-m3 m6 ">
+    <div class="col offset-s2 s8  offset-m2 m8 ">
         <div class="card  darken-1 z-depth-3">
             <div class="card-content">
 
@@ -23,7 +23,7 @@
                         <div class="row">
 
                             <div class="input-field col m6 s12">
-                                <input placeholder="Ex: João" id="nome" name="nome" type="text" value="<?= @$nome ?>"
+                                <input placeholder="Ex: João" id="nome" name="nome" onblur="validaString(nome,'nome')" type="text" value="<?= @$nome ?>"
                                        class="validate">
                                 <label for="first_name">Primeiro nome</label>
                             </div>
@@ -31,7 +31,7 @@
 
                             <div class="input-field col m6 s12">
                                 <input placeholder="Ex. da Silva" name="sobrenome" id="sobrenome"
-                                       value="<?= @$sobrenome ?>" type="text" class="validate">
+                                       value="<?= @$sobrenome ?>" onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
                                 <label for="last_name">Segundo nome</label>
                             </div>
 
@@ -103,3 +103,4 @@
 <h6 class="center"><a href="<?= URL_RAIZ . 'login' ?>" >Voltar para tela de Login</a></h6>
 
 
+<a onclick="M.toast({html: 'Exitem erros'})" class="btn">Toast!</a>

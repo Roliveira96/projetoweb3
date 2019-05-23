@@ -2,6 +2,7 @@
 namespace Controlador;
 
 use \Modelo\Usuario;
+use \Framework\DW3Sessao;
 
 class LoginControlador extends Controlador
 {
@@ -17,12 +18,20 @@ class LoginControlador extends Controlador
     {
 
         var_dump("Email: " . $_POST['usuario']);
-        var_dump("Senha: " . $_POST['senha']);
+       var_dump("Senha: " . $_POST['senha']);
 
-        $usuario = new Usuario();
 
-        $usuario->login($_POST['usuario'] , $_POST['senha'] );
 
+        $usuario = Usuario::buscarEmail($_POST['usuario']);
+        if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
+           DW3Sessao::set('usuario', $usuario->getId());
+            $this->redirecionar(URL_RAIZ );
+            var_dump("deu certo");
+        } else {
+           // $this->setErros(['login' => 'Usuário ou senha inválido.']);
+          //  $this->visao('login/criar.php');
+            var_dump("deu ruim");
+        }
 
     }
 }
