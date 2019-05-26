@@ -1,6 +1,9 @@
 <h1 class="hide">cod_1992</h1>
 
 
+
+
+
 <div class="row">
     <h4 class="center">Login</h4>
     <h6 class="center">Por favor entre com suas informações</h6>
@@ -13,12 +16,16 @@
                 <div class="center-block site">
 
 
+
                     <form action="<?= URL_RAIZ . 'login' ?>" method="post" class="form-inline pull-left">
 
 
                         <div class="form ">
                             <img class="img_login" src="<?= URL_IMG . 'login.png' ?>">
                         </div>
+
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'login']) ?>
+
                         <div class="form">
 
                             <?php

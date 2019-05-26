@@ -21,15 +21,34 @@ class CadastroUsuarioControlador extends Controlador
 //        var_dump("Senha: " . $_POST['senha']);
 //        var_dump("Senhare: " . $_POST['senhare']);
 //        var_dump("Email: " . );
+        $nome = $_POST['nome'];
+        $this->vereficTamanhoString($nome, 2);
+        var_dump(
+            "Teste nome: " . strlen($nome) . " teste 2 "
+        );
+        if ($this->vereficTamanhoString($nome, 2)) {
+            var_dump("nome maior ou igual");
+        } else {
+            var_dump("nome menor");
 
+        }
 
-        $usuario = new Usuario($_POST['nome'], $_POST['sobrenome'], $_POST['email'], $_POST['senha']);
+        die();
+
+        $usuario = new Usuario("ricardo", $_POST['sobrenome'], $_POST['email'], $_POST['senha']);
         $usuario->salvar();
-        setcookie('emailLogin', $_POST['email'], time() +100);
+        // setcookie('emailLogin', $_POST['email'], time() +100);
 
-               $this->redirecionar(URL_RAIZ . 'login');
+        $this->redirecionar(URL_RAIZ . 'login');
 
 
     }
 
+
+    private function vereficTamanhoString($palavra, $tamanho)
+    {
+        return strlen($palavra) >= $tamanho;
+
+
+    }
 }

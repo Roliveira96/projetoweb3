@@ -17,20 +17,24 @@ class LoginControlador extends Controlador
     public function login()
     {
 
-        var_dump("Email: " . $_POST['usuario']);
-       var_dump("Senha: " . $_POST['senha']);
 
+// Criando Cookies
+        $nome = "masterdaweb";
+        $valor = "Cookie Criado com Sucesso";
+        $expira = time() + 3600;
 
+setcookie('emailLogin', $_POST['usuario'], time() + 600);
 
         $usuario = Usuario::buscarEmail($_POST['usuario']);
+
+
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
            DW3Sessao::set('usuario', $usuario->getId());
             $this->redirecionar(URL_RAIZ );
-            var_dump("deu certo");
         } else {
-           $this->setErros(['login' => 'Usuário ou senha inválido.']);
+            $this->setErros(['login' => 'Usuário ou senha inválido.']);
             $this->visao('login/index.php');
-            var_dump("deu ruim");
+
         }
 
     }

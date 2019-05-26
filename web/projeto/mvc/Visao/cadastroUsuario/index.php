@@ -23,7 +23,8 @@
                         <div class="row">
 
                             <div class="input-field col m6 s12">
-                                <input placeholder="Ex: João" id="nome" name="nome" onblur="validaString(nome,'nome')" type="text" value="<?= @$nome ?>"
+                                <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value
+                                })" type="text" value="<?= @$nome ?>"
                                        class="validate">
                                 <label for="first_name">Primeiro nome</label>
                             </div>
@@ -31,7 +32,8 @@
 
                             <div class="input-field col m6 s12">
                                 <input placeholder="Ex. da Silva" name="sobrenome" id="sobrenome"
-                                       value="<?= @$sobrenome ?>" onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
+                                       value="<?= @$sobrenome ?>" onfocusout="M.toast({html: value
+                                })" onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
                                 <label for="last_name">Segundo nome</label>
                             </div>
 
@@ -53,7 +55,8 @@
 
                         <div class="row">
                             <div class="input-field col s12 ">
-                                <input placeholder="Ex: exemplo@gmail.com" name="email" value="<?= @$email ?>"
+                                <input placeholder="Ex: exemplo@gmail.com" name="email" onfocusout="M.toast({html: value
+                                })" value="<?= @$email ?>"
                                        id="email" type="email" class="validate">
                                 <label for="email">Email</label>
                             </div>

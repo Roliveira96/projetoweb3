@@ -46,13 +46,7 @@ class Usuario extends Modelo
     }
 
 
-    public static function login($email,$senha){
 
-        /// Fazer depois...
-
-
-
-    }
 
     public static function buscarEmail($email)
     {
@@ -79,8 +73,8 @@ class Usuario extends Modelo
     {
 
         //  return password_verify($senhaPlana, $this->senha);
-        var_dump("senha Plana --> " .$this->senha);
-        var_dump("senha  --> " .$senhaPlana);
+      //  var_dump("senha Plana --> " .$this->senha);
+       // var_dump("senha  --> " .$senhaPlana);
 
         if($this->senha == $senhaPlana)
         return true;
