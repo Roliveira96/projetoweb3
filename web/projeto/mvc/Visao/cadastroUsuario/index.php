@@ -22,11 +22,17 @@
                         <!--nome e sobrenome-->
                         <div class="row">
 
+                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'erros']) ?>
+
+
                             <div class="input-field col m6 s12">
                                 <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value
                                 })" type="text" value="<?= @$nome ?>"
                                        class="validate">
                                 <label for="first_name">Primeiro nome</label>
+
+                               <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
+
                             </div>
 
 
@@ -35,6 +41,8 @@
                                        value="<?= @$sobrenome ?>" onfocusout="M.toast({html: value
                                 })" onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
                                 <label for="last_name">Segundo nome</label>
+                                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
+
                             </div>
 
                         </div>
@@ -44,11 +52,17 @@
                             <div class="input-field col s12 m6">
                                 <input id="senha" name="senha" type="password" class="validate">
                                 <label for="password">Senha</label>
+                                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha']) ?>
+                                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
+
                             </div>
 
                             <div class="input-field col s12 m6">
                                 <input id="senhaa" name="senhare" type="password" class="validate">
                                 <label for="password">Repita a senha</label>
+                                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha1']) ?>
+                                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
+
                             </div>
                         </div>
                         <!--email-->
@@ -59,6 +73,7 @@
                                 })" value="<?= @$email ?>"
                                        id="email" type="email" class="validate">
                                 <label for="email">Email</label>
+                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'email']) ?>
                             </div>
                         </div>
 
