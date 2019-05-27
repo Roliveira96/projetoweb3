@@ -12,11 +12,6 @@ class TesteRaiz extends Teste
         $resposta = $this->get(URL_RAIZ);
         $this->verificarContem($resposta, 'cod_1990');
 
-//        $resposta = $this->get(URL_RAIZ.'login');
-//        $this->verificarContem($resposta, 'home_1992');
-//
-//        $resposta = $this->get(URL_RAIZ.'cadastroUsuario');
-//        $this->verificarContem($resposta, 'home_1991');
 
 
     }

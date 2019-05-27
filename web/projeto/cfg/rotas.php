@@ -17,6 +17,10 @@ $rotas = [
         'GET' => '\Controlador\CadastroUsuarioControlador#index',
         'POST' => '\Controlador\CadastroUsuarioControlador#armazenar',
 
+    ],
+
+    '/perfil' => [
+        'GET' => '\Controlador\PerfilControlador#index',
     ]
 
 ];

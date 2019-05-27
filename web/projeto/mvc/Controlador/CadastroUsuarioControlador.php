@@ -7,7 +7,8 @@ use \Modelo\Usuario;
 class CadastroUsuarioControlador extends Controlador
 {
 
-    private $error =['erros' => 'Foram encontrado alguns erros'];
+    private $errors = ['erros' => 'Foram encontrado alguns erros'];
+    private $haErros = false;
 
     public function index()
     {
@@ -19,11 +20,6 @@ class CadastroUsuarioControlador extends Controlador
     public function armazenar()
     {
 
-//        var_dump("Nome: " . $_POST['nome']);
-//        var_dump("Sobrenome: " . $_POST['sobrenome']);
-//        var_dump("Senha: " . $_POST['senha']);
-//        var_dump("Senhare: " . $_POST['senhare']);
-//        var_dump("Email: " . );
 
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];
@@ -74,6 +70,8 @@ class CadastroUsuarioControlador extends Controlador
         if ($this->vereficaTamanhoString($email, 8)) {
             var_dump("EMAIL maior ou igual");
 
+
+
         } else {
             var_dump("Email menor");
             $this->insereError('email');
@@ -82,13 +80,34 @@ class CadastroUsuarioControlador extends Controlador
         }
 
 
-        //$usuario = new Usuario("ricardo", $_POST['sobrenome'], $_POST['email'], $_POST['senha']);
-        //  $usuario->salvar();
-        // setcookie('emailLogin', $_POST['email'], time() +100);
+        var_dump($this->haErros);
+        if ($this->haErros) {
+            $this->setErros($this->errors);
+            $this->Visao('cadastroUsuario/index.php',
+                [
+                    'nome' => $nome,
+                    'sobrenome' => $sobrenome,
+                    'email' => $email]
 
-        $this->setErros($this->error);
+            );
+        } else {
+            $usuario = new Usuario($nome, $sobrenome, $email, $senha);
+            if($usuario->isValido()){
+                var_dump("deu certo");
+            }
+            else{
+                var_dump("deu ruim");
 
-        $this->visao('cadastroUsuario/index.php');
+            }
+
+
+          //  $usuario = new Usuario($nome, $sobrenome, $email, $senha);
+            $usuario->salvar();
+
+            $this->redirecionar('perfil');
+
+
+        }
 
 
     }
@@ -103,30 +122,28 @@ class CadastroUsuarioControlador extends Controlador
 
     private function insereError($campo)
     {
-
-
+        $this->haErros = true;
         switch ($campo) {
             case "nome" :
-                $this->error += ['nome' => 'O nome deve conter mais que 2 letras!'];
+                $this->errors += ['nome' => 'O nome deve conter mais que 2 letras!'];
                 break;
             case  "sobrenome":
-                $this->error += ['sobrenome' => 'O sobrenome deve conter mais que 5 letras!'];
+                $this->errors += ['sobrenome' => 'O sobrenome deve conter mais que 5 letras!'];
                 break;
             case  "senha":
-                $this->error += ['senha' => 'A senha deve conter no minimo 8 caracteres!'];
+                $this->errors += ['senha' => 'A senha deve conter no minimo 8 caracteres!'];
                 break;
             case  "senha1":
-                $this->error += ['senha1' => 'A senha deve conter no minimo 8 caracteres!'];
+                $this->errors += ['senha1' => 'A senha deve conter no minimo 8 caracteres!'];
                 break;
             case  "email":
-                $this->error += ['email' => 'O email deve conter mais caracteres!'];
+                $this->errors += ['email' => 'O email deve conter mais caracteres!'];
                 break;
-                case  "senhaDif":
-                $this->error += ['conf' => 'As senhas estão diferente!'];
+            case  "senhaDif":
+                $this->errors += ['conf' => 'As senhas estão diferente!'];
                 break;
         }
 
-        var_dump($this->error);
 
     }
 }

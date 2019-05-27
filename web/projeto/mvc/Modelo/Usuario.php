@@ -33,7 +33,6 @@ class Usuario extends Modelo
 
     public function salvar()
     {
-        var_dump("entrou");
         DW3BancoDeDados::getPdo()->beginTransaction();
         $comando = DW3BancoDeDados::prepare(self::INSERIR);
         $comando->bindValue(1, $this->nome, PDO::PARAM_STR);

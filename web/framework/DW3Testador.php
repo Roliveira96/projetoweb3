@@ -3,7 +3,7 @@ namespace Framework;
 
 class DW3Testador
 {
-    public function testarTudo()
+    public function                                                                                 testarTudo()
     {
         $this->rodarTestes('Unitario');
         $this->rodarTestes('Funcional');

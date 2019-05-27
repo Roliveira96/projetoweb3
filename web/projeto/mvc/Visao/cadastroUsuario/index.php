@@ -1,4 +1,3 @@
-
 <h1 class="hide">cod_1991</h1>
 
 
@@ -13,8 +12,7 @@
 
                 <div class="center-block site">
 
-
-                    <form action="<?= URL_RAIZ  . 'cadastroUsuario'?>" method="post" class="form-inline pull-left">
+                    <form action="<?= URL_RAIZ . 'cadastroUsuario' ?>" method="post" class="form-inline pull-left">
 
                         <div class="form ">
                             <img class="img_login" src="<?= URL_IMG . 'login.png' ?>">
@@ -25,32 +23,70 @@
                             <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'erros']) ?>
 
 
-                            <div class="input-field col m6 s12">
-                                <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value
-                                })" type="text" value="<?= @$nome ?>"
-                                       class="validate">
-                                <label for="first_name">Primeiro nome</label>
+                            <!-- inicio Imput nome -->
 
-                               <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
+                            <?php if (isset($nome)) : ?>
 
-                            </div>
+                                <div class="input-field col m6 s12">
+                                    <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value+' é uma belo nome'
+                                })" type="text" value="<?= $nome ?>"
+                                           class="validate">
+                                    <label for="first_name">Primeiro nome</label>
+
+                                    <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
+
+                                </div>
 
 
-                            <div class="input-field col m6 s12">
-                                <input placeholder="Ex. da Silva" name="sobrenome" id="sobrenome"
-                                       value="<?= @$sobrenome ?>" onfocusout="M.toast({html: value
-                                })" onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
-                                <label for="last_name">Segundo nome</label>
-                                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
+                            <?php else : ?>
 
-                            </div>
+
+                                <div class="input-field col m6 s12">
+                                    <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value+' é uma belo nome'
+                                })" type="text" class="validate">
+                                    <label for="first_name">Primeiro nome</label>
+
+                                    <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
+
+                                </div>
+                            <?php endif ?>
+                            <!-- fim Imput nome -->
+
+
+                            <!-- inicio Imput sobrenome -->
+
+
+                            <?php if (isset($sobrenome)) : ?>
+
+                                <div class="input-field col m6 s12">
+                                    <input placeholder="Ex. da Silva" name="sobrenome" id="sobrenome"
+                                           value="<?= $sobrenome ?>"
+                                           onfocusout="M.toast({html:  'Falta somente as senhas!'})"
+                                           onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
+                                    <label for="last_name">Segundo nome</label>
+                                    <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
+
+                                </div>
+                            <?php else : ?>
+                                <div class="input-field col m6 s12">
+                                    <input placeholder="Ex. da Silva" name="sobrenome" id="sobrenome"
+                                           onfocusout="M.toast({html:  'Falta somente as senhas!'})"
+                                           onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
+                                    <label for="last_name">Segundo nome</label>
+                                    <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
+
+                                </div>
+                            <?php endif ?>
+
+                            <!-- fim Imput sobrenome -->
+
 
                         </div>
 
                         <!--senha e re-senha-->
                         <div class="row">
                             <div class="input-field col s12 m6">
-                                <input id="senha" name="senha" type="password" class="validate">
+                                <input id="senha" name="senha" type="password"  onclick="M.toast({html:  'Lembrando a você, que a senha tem que ser maior que 8 digitos'})" class="validate">
                                 <label for="password">Senha</label>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha']) ?>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
@@ -58,7 +94,7 @@
                             </div>
 
                             <div class="input-field col s12 m6">
-                                <input id="senhaa" name="senhare" type="password" class="validate">
+                                <input id="senhaa" name="senhare" type="password" onclick="M.toast({html:  'E as senhas devem ser iguais para continuar!'})" class="validate">
                                 <label for="password">Repita a senha</label>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha1']) ?>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
@@ -67,15 +103,30 @@
                         </div>
                         <!--email-->
 
-                        <div class="row">
-                            <div class="input-field col s12 ">
-                                <input placeholder="Ex: exemplo@gmail.com" name="email" onfocusout="M.toast({html: value
+                        <?php if (isset($email)) : ?>
+
+                            <div class="row">
+                                <div class="input-field col s12 ">
+                                    <input placeholder="Ex: exemplo@gmail.com" name="email" onblur="M.toast({html:  'Você vai ter que utilizar esse email para se logar em nosso sistema'})" onfocusout="M.toast({html: value
                                 })" value="<?= @$email ?>"
-                                       id="email" type="email" class="validate">
-                                <label for="email">Email</label>
-                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'email']) ?>
+                                           id="email" type="email" class="validate">
+                                    <label for="email">Email</label>
+                                    <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'email']) ?>
+                                </div>
                             </div>
-                        </div>
+                        <?php else : ?>
+                            <div class="row">
+                                <div class="input-field col s12 ">
+                                    <input placeholder="Ex: exemplo@gmail.com" name="email" onblur= "M.toast({html:  'Você vai ter que utilizar esse email para se logar em nosso sistema'})" onfocusout="M.toast({html: value
+                                })"
+                                           id="email" type="email" class="validate">
+                                    <label for="email">Email</label>
+                                    <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'email']) ?>
+                                </div>
+                            </div>
+                        <?php endif ?>
+
+                        <!-- fim Imput email -->
 
 
                         <!--imagem perfil-->
@@ -118,7 +169,7 @@
 
 
 </div>
-<h6 class="center"><a href="<?= URL_RAIZ . 'login' ?>" >Voltar para tela de Login</a></h6>
+<h6 class="center"><a href="<?= URL_RAIZ . 'login' ?>">Voltar para tela de Login</a></h6>
 
 
 <a onclick="M.toast({html: 'Exitem erros'})" class="btn">Toast!</a>

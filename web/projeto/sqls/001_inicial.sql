@@ -1,6 +1,6 @@
-create database projeto collate 'utf8_unicode_ci' ;
+CREATE DATABASE projeto COLLATE 'utf8_unicode_ci';
 
-create table if not exists usuario(
+create table if not exists usuarios(
 id_usuario int auto_increment,
 nome varchar(50) not null,
 sobrenome varchar(150) not null,
