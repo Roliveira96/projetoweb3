@@ -16,10 +16,6 @@ class TesteUsuario extends Teste
         $usuario->salvar();
         $query = DW3BancoDeDados::query('SELECT * FROM usuarios');
         $baseUsuario = $query->fetch();
-        var_dump("Quantidade de registros: " . $query->rowCount());
-        var_dump("Email do usuario vindo do banco: ".$baseUsuario['email']);
-        var_dump("Email do usuario vindo da aplicação: " . $usuario->getEmail());
-
         $this->verificar($baseUsuario['email'] === $usuario->getEmail());
         $this->verificar($query->rowCount() == 1);
     }

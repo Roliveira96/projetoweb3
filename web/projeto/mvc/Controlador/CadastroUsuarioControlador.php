@@ -2,6 +2,7 @@
 
 namespace Controlador;
 
+use Framework\DW3Sessao;
 use \Modelo\Usuario;
 
 class CadastroUsuarioControlador extends Controlador
@@ -103,7 +104,7 @@ class CadastroUsuarioControlador extends Controlador
 
           //  $usuario = new Usuario($nome, $sobrenome, $email, $senha);
             $usuario->salvar();
-
+            DW3Sessao::set('usuario' , $usuario->getId());
             $this->redirecionar('perfil');
 
 
