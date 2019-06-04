@@ -16,10 +16,23 @@ class LoginControlador extends Controlador
 //        var_dump("Teste: --> " . $usuarioid);
 //        die();
 
+        $usuarioID = DW3Sessao::get('usuario');
+        if (!$usuarioID) {
+            $this->visao('login/index.php');
+        } else {
+
+            $this->visao('quest/index.php', [], 'logado.php');
+        }
+    }
+
+
+    public function destruirLogin()
+    {
+        DW3Sessao::deletar('usuario');
+
         $this->visao('login/index.php');
 
     }
-
 
     public function login()
     {
@@ -37,7 +50,7 @@ class LoginControlador extends Controlador
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario->getId());
-            $this->visao('perfil/index.php', [], 'logado.php');
+            $this->visao('quest/index.php', [], 'logado.php');
 
         } else {
             $this->setErros(['login' => 'Usuário ou senha inválido.']);

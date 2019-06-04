@@ -22,47 +22,62 @@
 
 </head>
 <body>
+
+
 <header>
-
-
-
     <nav>
         <div class="container">
             <div class="nav-wrapper">
 
                 <a href="#" class="brand-logo ">Logo</a>
+
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?= URL_RAIZ ?>">home</a></li>
-                    <li><a href="collapsible.html">questões</a></li>
+                    <li><a href="<?= URL_RAIZ . 'quest' ?>">questões</a></li>
+                    <li><a href="<?= URL_RAIZ . 'sair' ?>">sair</a></li>
+
                 </ul>
+
+
             </div>
         </div>
     </nav>
 </header>
+
+
 <main>
+    <div class="container">
 
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="<?= URL_IMG . 'fundo.jpg' ?>">
+                    </div>
 
-    <ul id="slide-out" class="sidenav">
-        <li>
-            <div class="user-view">
-                <div class="background">
-                    <img src="images/office.jpg">
+                    <a href="#user"><img class="circle" src="<?= URL_IMG . 'login.png' ?>"></a>
+                    <a href="#name"><span class="white-text name">John Doe</span></a>
+                    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+
                 </div>
-                <a href="#user"><img class="circle" src="<?= URL_IMG  . 'login.png'?>"></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-            </div>
-        </li>
-        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-        <li><a href="#!">Second Link</a></li>
-        <li>
-            <div class="divider"></div>
-        </li>
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
+            </li>
+            <li><a href="<?= URL_RAIZ . 'criarPage' ?>"><i class="material-icons">add_circle</i>Criar perguntas</a></li>
+            <li><a href="<?= URL_RAIZ . 'responderPage' ?>"><i class="material-icons">chat</i>Responder</a></li>
+
+            <li>
+                <div class="divider">sdgds</div>
+            </li>
+
+            <li><a href="<?= URL_RAIZ . 'relatorioPage' ?>"><i class="material-icons">report </i>Relatório</a></li>
+        </ul>
+
+
+        <a href="#" data-target="slide-out" class="sidenav-trigger">
+            <i class="medium material-icons ">menu</i></a>
+
+
+    </div>
 
     <div class="container">
 
@@ -84,6 +99,8 @@
     </div>
 
 </footer>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript" src="<?= URL_JS . 'materialize.min.js' ?>"></script>
 <script type="text/javascript" src="<?= URL_JS . 'main.js' ?>"></script>
