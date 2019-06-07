@@ -10,11 +10,13 @@ class LoginControlador extends Controlador
 {
     public function loginPage()
     {
+
+        //$this->buscaTodosUser();
+
         $usuarioID = DW3Sessao::get('usuario');
 
-//        var_dump("Teste: --> " . $usuarioid);
-//        var_dump("Teste: --> " . $usuarioid);
-//        die();
+
+
 
         $usuarioID = DW3Sessao::get('usuario');
         if (!$usuarioID) {
@@ -23,6 +25,8 @@ class LoginControlador extends Controlador
 
             $this->visao('quest/index.php', [], 'logado.php');
         }
+
+
     }
 
 
@@ -57,6 +61,22 @@ class LoginControlador extends Controlador
             $this->visao('login/index.php');
 
         }
+
+
+
+
+    }
+
+
+    private function  buscaTodosUser(){
+
+        $usuarios = Usuario::buscarTodos();
+
+var_dump("Teste"  . $usuarios);
+
+
+
+
 
     }
 }

@@ -73,7 +73,10 @@
         </ul>
 
 
-        <a href="#" data-target="slide-out" class="sidenav-trigger">
+        <a href="#" data-target="slide-out"
+           class="sidenav-trigger btn-floating btn-large waves-effect waves-light black">
+
+
             <i class="medium material-icons ">menu</i></a>
 
 

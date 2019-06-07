@@ -37,6 +37,7 @@ $rotas = [
 
     '/criarPage' => [
         'GET' => '\Controlador\ControladorQuest#criarPageQuest',
+        'POST' => '\Controlador\ControladorQuest#salvarQuest'
     ],
 
     '/responderPage' => [

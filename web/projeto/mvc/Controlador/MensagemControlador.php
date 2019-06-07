@@ -18,5 +18,8 @@ class MensagemControlador extends Controlador
         $mensagem = new Mensagem($_POST['usuario'], $_POST['texto']);
         $mensagem->salvar();
         $this->redirecionar(URL_RAIZ);
+
+
+
     }
 }

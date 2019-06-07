@@ -6,7 +6,7 @@ use \Framework\DW3BancoDeDados;
 
 class Usuario extends Modelo
 {
-    const BUSCAR_TODOS = 'SELECT id, texto, usuarios FROM mensagens ORDER BY id';
+    const BUSCAR_TODOS = 'SELECT * FROM usuarios ';
     const INSERIR = 'INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES (?, ? , ? , ?)';
     const BUSCAR_POR_EMAIL = 'SELECT * FROM usuarios WHERE email = ? LIMIT 1';
 
@@ -86,14 +86,21 @@ class Usuario extends Modelo
         $registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
         $objetos = [];
         foreach ($registros as $registro) {
-            $objetos[] = new Mensagem(
-                $registro['usuario'],
-                $registro['texto'],
-                $registro['id']
+            $objetos[] = new Usuario(
+                $registro['nome'],
+                $registro['sobrenome'],
+                null,
+                null
             );
         }
-        return $objetos;
+
+      //  var_dump($objetos);
+        return $objetos            ;
     }
+
+
+
+
 
 
     public function getId()

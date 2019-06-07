@@ -1,8 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, options);
-    instance.open();
-});
+
 
 // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
 // var collapsibleElem = document.querySelector('.collapsible');
@@ -12,15 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 $(document).ready(function(){
     $('.sidenav').sidenav();
+    $('select').formSelect();
 });
 
 (function(){
 
 
-function vereficaSeSoString(palavra) {
-console.log("AQuid" + palavra) ;
-   return  isNaN(palavra)? true : false;
-}
 
 
 

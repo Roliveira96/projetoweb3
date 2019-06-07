@@ -35,4 +35,12 @@ class ControladorQuest extends Controlador
     }
 
 
+    public  function  salvarQuest(){
+        var_dump($_POST['titulo']);
+        var_dump($_POST['descricao']);
+        var_dump($_POST['select']);
+        die();
+    }
+
+
 }
