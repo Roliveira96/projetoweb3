@@ -8,7 +8,7 @@
                 <h4 class="center">Crie suas quests</h4>
                 <h6 class="center">Seja desafiador ou nem tanto! 😅 </h6>
 
-                <form action="<?= URL_RAIZ . 'criarPage' ?>" method="post" class="form-inline pull-left">
+                <form action="<?= URL_RAIZ . 'criarPage' ?>" method="post" class="form-inline pull-left" enctype="multipart/form-data">
 
                     <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'erros']) ?>
 
@@ -100,7 +100,7 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Imagem para a questão</span>
-                            <input id="foto" name="foto" type="file">
+                            <input id="img" name="img" type="file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">

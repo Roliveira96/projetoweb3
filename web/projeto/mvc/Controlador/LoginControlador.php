@@ -13,7 +13,6 @@ class LoginControlador extends Controlador
 
         //$this->buscaTodosUser();
 
-        $usuarioID = DW3Sessao::get('usuario');
 
 
 

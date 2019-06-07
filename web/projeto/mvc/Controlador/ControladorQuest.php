@@ -2,6 +2,7 @@
 
 namespace Controlador;
 
+use Framework\DW3Sessao;
 use \Modelo\Mensagem;
 
 class ControladorQuest extends Controlador
@@ -35,10 +36,19 @@ class ControladorQuest extends Controlador
     }
 
 
-    public  function  salvarQuest(){
+    public function salvarQuest()
+    {
+
+        $usuarioID = DW3Sessao::get('usuario');
+
+        var_dump($usuarioID);
         var_dump($_POST['titulo']);
         var_dump($_POST['descricao']);
         var_dump($_POST['select']);
+
+        $foto = array_key_exists('img', $_FILES) ? $_FILES['img'] : null;
+
+        var_dump($foto);
         die();
     }
 

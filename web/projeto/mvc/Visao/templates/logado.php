@@ -62,14 +62,14 @@
                 </div>
 
             </li>
-            <li><a href="<?= URL_RAIZ . 'criarPage' ?>"><i class="material-icons">add_circle</i>Criar perguntas</a></li>
-            <li><a href="<?= URL_RAIZ . 'responderPage' ?>"><i class="material-icons">chat</i>Responder</a></li>
+            <li><a href="<?= URL_RAIZ . 'quest/criarPage' ?>"><i class="material-icons">add_circle</i>Criar perguntas</a></li>
+            <li><a href="<?= URL_RAIZ . 'quest/responderPage' ?>"><i class="material-icons">chat</i>Responder</a></li>
 
             <li>
                 <div class="divider">sdgds</div>
             </li>
 
-            <li><a href="<?= URL_RAIZ . 'relatorioPage' ?>"><i class="material-icons">report </i>Relatório</a></li>
+            <li><a href="<?= URL_RAIZ . 'quest/relatorioPage' ?>"><i class="material-icons">report </i>Relatório</a></li>
         </ul>
 
 
