@@ -104,7 +104,6 @@ class Usuario extends Modelo
     }
 
 
-
     public function salvar()
     {
         $this->inserir();
@@ -135,17 +134,17 @@ class Usuario extends Modelo
 
         //Verifica o tamanho do nome
         if ($this->vereficaTamanhoString($this->nome, 2)) {
-            var_dump("NOME maior ou igual");
+           // var_dump("NOME maior ou igual");
         } else {
             var_dump("Nome menor");
-            $this->insereError('nome');
+          //  $this->insereError('nome');
         }
 
         //Verifica o tamanho do sobrenome
         if ($this->vereficaTamanhoString($this->sobrenome, 4)) {
-            var_dump("SOBRENOME maior ou igual");
+           // var_dump("SOBRENOME maior ou igual");
         } else {
-            var_dump("Sobrenome menor");
+           // var_dump("Sobrenome menor");
             $this->insereError('sobrenome');
 
 
@@ -153,32 +152,30 @@ class Usuario extends Modelo
 
         //Verifica o tamanho da senha
         if ($this->vereficaTamanhoString($this->senha, 8)) {
-            var_dump("Senha maior ou igual");
+           // var_dump("Senha maior ou igual");
 
             //Verificando se as senhas confere uma com a outra
             if ($this->senha == $this->senha1) {
-                var_dump("As senhas confere");
+                //var_dump("As senhas confere");
             } else {
-                var_dump("As senhas não confere");
+              //  var_dump("As senhas não confere");
                 $this->insereError('senhaDif');
 
             }
 
         } else {
-            var_dump("Senha menor");
             $this->insereError('senha');
             $this->insereError('senha1');
 
         }
 
 
-        //Verifica o tamanho do email
-        if ($this->vereficaTamcanhoString($this->email, 8)) {
-            var_dump("EMAIL maior ou igual");
+        if ($this->vereficaTamanhoString($this->email, 8)) {
+          //  var_dump("EMAIL maior ou igual");
 
 
         } else {
-            var_dump("Email menor");
+          //  var_dump("Email menor");
             $this->insereError('email');
 
 
@@ -194,29 +191,26 @@ class Usuario extends Modelo
     }
 
 
-
-
     private function insereError($campo)
     {
-        $this->haErros = true;
         switch ($campo) {
             case "nome" :
-                $this->errors += ['nome' => 'O nome deve conter mais que 2 letras!'];
+                $this->setErroMensagem('nome', 'O nome deve conter mais que 2 letras!');
                 break;
             case  "sobrenome":
-                $this->errors += ['sobrenome' => 'O sobrenome deve conter mais que 5 letras!'];
+                $this->setErroMensagem('sobrenome', 'O sobrenome deve conter mais que 5 letras!');
                 break;
             case  "senha":
-                $this->errors += ['senha' => 'A senha deve conter no minimo 8 caracteres!'];
+                $this->setErroMensagem('senha', 'A senha deve conter no minimo 8 caracteres!');
                 break;
             case  "senha1":
-                $this->errors += ['senha1' => 'A senha deve conter no minimo 8 caracteres!'];
+                $this->setErroMensagem('senha1', 'A senha deve conter no minimo 8 caracteres!');
                 break;
             case  "email":
-                $this->errors += ['email' => 'O email deve conter mais caracteres!'];
+                $this->setErroMensagem('email', 'O email deve conter mais caracteres!');
                 break;
             case  "senhaDif":
-                $this->errors += ['conf' => 'As senhas estão diferente!'];
+                $this->setErroMensagem('conf', 'As senhas estão diferente!');
                 break;
         }
 

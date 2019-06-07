@@ -25,34 +25,24 @@ class CadastroUsuarioControlador extends Controlador
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];
         $senha = $_POST['senha'];
+        $senha1 = $_POST['senha1'];
         $email = $_POST['email'];
+        $usuario = new Usuario($nome, $sobrenome, $email, $senha, $senha1);
 
-        var_dump($this->haErros);
-        if ($this->haErros) {
-            $this->setErros($this->errors);
-            $this->Visao('cadastroUsuario/index.php',
-                [
-                    'nome' => $nome,
-                    'sobrenome' => $sobrenome,
-                    'email' => $email]
-
-            );
-        } else {
-            $usuario = new Usuario($nome, $sobrenome, $email, $senha);
-            if($usuario->isValido()){
-                var_dump("deu certo");
-            }
-            else{
-                var_dump("deu ruim");
-
-            }
-
-
-          //  $usuario = new Usuario($nome, $sobrenome, $email, $senha);
+        if ($usuario->isValido()) {
+            var_dump("deu certo");
             $usuario->salvar();
-            DW3Sessao::set('usuario' , $usuario->getId());
+            DW3Sessao::set('usuario', $usuario->getId());
             $this->redirecionar('perfil');
 
+        } else {
+
+            $this->setErros($usuario->getValidacaoErros());
+            $this->visao('cadastroUsuario/index.php', [
+                'nome' => $nome,
+                'sobrenome' => $sobrenome,
+                'email' => $email
+            ]);
 
         }
 

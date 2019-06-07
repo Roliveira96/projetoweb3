@@ -20,7 +20,6 @@
                         <!--nome e sobrenome-->
                         <div class="row">
 
-                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'erros']) ?>
 
 
                             <!-- inicio Imput nome -->
@@ -94,7 +93,7 @@
                             </div>
 
                             <div class="input-field col s12 m6">
-                                <input id="senhaa" name="senhare" type="password" onclick="M.toast({html:  'E as senhas devem ser iguais para continuar!'})" class="validate">
+                                <input id="senha1" name="senha1" type="password" onclick="M.toast({html:  'E as senhas devem ser iguais para continuar!'})" class="validate">
                                 <label for="password">Repita a senha</label>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha1']) ?>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
@@ -171,5 +170,3 @@
 </div>
 <h6 class="center"><a href="<?= URL_RAIZ . 'login' ?>">Voltar para tela de Login</a></h6>
 
-
-<a onclick="M.toast({html: 'Exitem erros'})" class="btn">Toast!</a>
