@@ -6,35 +6,31 @@ use Framework\DW3ImagemUpload;
 use \PDO;
 use \Framework\DW3BancoDeDados;
 
-class Usuario extends Modelo
+class Quest extends Modelo
 {
     const BUSCAR_TODOS = 'SELECT * FROM usuarios ';
-    const INSERIR = 'INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES (?, ? , ? , ?)';
+    const INSERIR = 'INSERT INTO quest(titulo, descricao, dificuldade) VALUES (?, ? , ? )';
     const BUSCAR_POR_EMAIL = 'SELECT * FROM usuarios WHERE email = ? LIMIT 1';
 
     private $id;
-    private $nome;
-    private $sobrenome;
-    private $email;
-    private $senha;
-    private $senhaCripto;
+    private $titulo;
+    private $descricao;
+    private $dificuldade;
+    private $img;
+
 
     public function __construct(
-        $nome,
-        $sobrenome,
-        $email,
-        $senha,
-        $senha1,
+        $titulo,
+        $descricao,
+        $dificuldade,
         $id = null
     )
     {
-        $this->nome = $nome;
-        $this->sobrenome = $sobrenome;
-        $this->email = $email;
-        $this->senha = $senha;
-        $this->senha1 = $senha1;
+        $this->titulo = $titulo;
+        $this->descricao = $descricao;
+        $this->dificuldade = $dificuldade;
         $this->id = $id;
-        $this->senhaCripto = password_hash($senha, PASSWORD_BCRYPT);
+
     }
 
 
@@ -42,60 +38,46 @@ class Usuario extends Modelo
     {
         DW3BancoDeDados::getPdo()->beginTransaction();
         $comando = DW3BancoDeDados::prepare(self::INSERIR);
-        $comando->bindValue(1, $this->nome, PDO::PARAM_STR);
-        $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
-        $comando->bindValue(3, $this->email, PDO::PARAM_STR);
-        $comando->bindValue(4, $this->senha, PDO::PARAM_STR);
+        $comando->bindValue(1, $this->titulo, PDO::PARAM_STR);
+        $comando->bindValue(2, $this->descricao, PDO::PARAM_STR);
+        $comando->bindValue(3, $this->dificuldade, PDO::PARAM_STR);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
 
 
-    public static function buscarEmail($email)
+    public static function buscarPorId($id)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_POR_EMAIL);
-        $comando->bindValue(1, $email, PDO::PARAM_STR);
+        $comando->bindValue(1, $id, PDO::PARAM_STR);
         $comando->execute();
         $objeto = null;
         $registro = $comando->fetch();
         if ($registro) {
-            $objeto = new Usuario(
-                '',
-                '',
-                $registro['email'],
-                null,
-                $registro['id_usuario']
+            $objeto = new Quest(
+                $registro['titulo'],
+                $registro['descricao'],
+                $registro['dificuldade'],
+                null
             );
-            $objeto->senha = $registro['senha'];
+            $objeto->id = $registro['id'];
         }
 
 
         return $objeto;
     }
 
-    public function verificarSenha($senhaPlana)
-    {
-
-        //  return password_verify($senhaPlana, $this->senha);
-        //  var_dump("senha Plana --> " .$this->senha);
-        // var_dump("senha  --> " .$senhaPlana);
-
-        if ($this->senha == $senhaPlana)
-            return true;
-        else
-            false;
-    }
 
     public static function buscarTodos()
     {
         $registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
         $objetos = [];
         foreach ($registros as $registro) {
-            $objetos[] = new Usuario(
-                $registro['nome'],
-                $registro['sobrenome'],
-                null,
+            $objetos[] = new Quest(
+                $registro['titulo'],
+                $registro['descricao'],
+                $registro['dificuldade'],
                 null
             );
         }
@@ -138,7 +120,7 @@ class Usuario extends Modelo
             // var_dump("NOME maior ou igual");
         } else {
             //var_dump("Nome menor");
-              $this->insereError('nome');
+            $this->insereError('nome');
         }
 
         //Verifica o tamanho do sobrenome

@@ -1,9 +1,6 @@
 <h1 class="hide">cod_1992</h1>
 
 
-
-
-
 <div class="row">
     <h4 class="center">Login</h4>
     <h6 class="center">Por favor entre com suas informações</h6>
@@ -14,7 +11,6 @@
             <div class="card-content">
 
                 <div class="center-block site">
-
 
 
                     <form action="<?= URL_RAIZ . 'login' ?>" method="post" class="form-inline pull-left">
@@ -38,7 +34,7 @@
                             <?php else: ?>
 
                                 <input id="usuario" name="usuario" class="form-control campo-form" autofocus
-                                       placeholder="Email" >
+                                       placeholder="Email">
 
                             <?php endif ?>
 

@@ -11,20 +11,30 @@ class LoginControlador extends Controlador
     public function loginPage()
     {
 
-        //$this->buscaTodosUser();
-
-
-
-
-
         $usuarioID = DW3Sessao::get('usuario');
+
         if (!$usuarioID) {
             $this->visao('login/index.php');
-        } else {
 
+        } else {
             $this->visao('quest/index.php', [], 'logado.php');
         }
 
+
+    }
+
+
+    public function loginPageAPI()
+    {
+        //Mudar o header quando for redirecionar para html
+        header('Content-Type: application/json');
+
+        $usuarios = Usuario::buscarTodos();
+
+        // $this->visao('login/index.php');
+
+        //Mudar para o metodo da api
+        echo json_encode($usuarios);
 
     }
 
@@ -41,7 +51,7 @@ class LoginControlador extends Controlador
     {
 
 
-// Criando Cookies
+        // Criando Cookies
         $nome = "masterdaweb";
         $valor = "Cookie Criado com Sucesso";
         $expira = time() + 3600;
@@ -62,20 +72,6 @@ class LoginControlador extends Controlador
         }
 
 
-
-
     }
 
-
-    private function  buscaTodosUser(){
-
-        $usuarios = Usuario::buscarTodos();
-
-var_dump("Teste"  . $usuarios);
-
-
-
-
-
-    }
 }

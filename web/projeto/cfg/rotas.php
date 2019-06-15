@@ -12,6 +12,10 @@ $rotas = [
         'POST' => '\Controlador\LoginControlador#login',
     ],
 
+    '/login/api'=>[
+        'GET' => '\Controlador\LoginControlador#loginPageAPI',
+    ],
+
     '/cadastroUsuario' => [
 
         'GET' => '\Controlador\CadastroUsuarioControlador#index',

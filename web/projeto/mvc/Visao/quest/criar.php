@@ -8,7 +8,8 @@
                 <h4 class="center">Crie suas quests</h4>
                 <h6 class="center">Seja desafiador ou nem tanto! 😅 </h6>
 
-                <form action="<?= URL_RAIZ . 'criarPage' ?>" method="post" class="form-inline pull-left" enctype="multipart/form-data">
+                <form action="<?= URL_RAIZ . 'quest/criarPage' ?>" method="post" class="form-inline pull-left"
+                      enctype="multipart/form-data">
 
                     <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'erros']) ?>
 
@@ -49,10 +50,10 @@
                     <div class="input-field col m4 s12">
                         <select name="select" id="select">
                             <option value="facil">Fácil 😇</option>
-                            <option value="media">Mediana 😐</option>
-                            <option value="dificil">Difícil 😟</option>
+                            <option value="media">Mediana 😅</option>
+                            <option value="dificil">Difícil 😈</option>
                         </select>
-                        <label>Materialize Select</label>
+                        <label>Nível da questão</label>
 
                     </div>
 
@@ -110,6 +111,304 @@
 
             </div>
 
+
+            <!-- Modal dica -->
+
+            <!-- Modal Trigger -->
+            <div class="col m12 center ">
+                <a class="waves-effect waves-light btn modal-trigger center " href="#modal1">Dicas para se criar altenativas</a>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4 class="center">Dicas de como se criar uma boa questão!</h4>
+
+                    <p>
+                        ― Sempre é bom inserir uma alternativa clara mesmo sendo a errada para que o usuário tenha um
+                        ótimo entendimento.
+
+                    </p>
+                    <p>
+                        ― Sempre selecionar a alternativa correta, e certificar se que realmente é a correta.
+
+                    </p>
+                    <p>
+                        ― É importante selecionar pelo menos duas alternativas e selecionar uma delas como correta.
+
+                    </p>
+                    <p>
+                        ― As alternativas tem que ter no mínimo 10 caracteres, e seja o mais claro possível.
+
+                    </p>
+                    <p>
+                        ― Pode deixar as alternativas em branco caso não exista mais respostas, porém terá que criar pelo
+                        menos duas alternativas obrigatoriamente.
+
+
+                    </p>
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok entendi!</a>
+                </div>
+            </div>
+
+            <!-- Modal dica -->
+
+            <!--Alternativas A-->
+
+
+            <?php if (isset($a)) : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                            <span>A</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea class="materialize-textarea" placeholder="Ex. teste" id="a" name="a"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra a'})"><?= $a ?></textarea>
+                        <label for="textarea1">Alternativa A</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'a']) ?>
+
+                    </div>
+                </div>
+
+            <?php else : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                            <span>A</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea id="a" name="a" class="materialize-textarea"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra a'})"></textarea>
+                        <label for="textarea1">Alternativa A</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'a']) ?>
+
+                    </div>
+
+                </div>
+            <?php endif ?>
+            <!--Alternativas A-->
+
+
+            <!--Alternativas B -->
+
+
+            <?php if (isset($b)) : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
+                            <span>B</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea class="materialize-textarea" placeholder="Ex. teste" id="b" name="b"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra b'})"><?= $b ?></textarea>
+                        <label for="textarea1">Alternativa B</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'b']) ?>
+
+                    </div>
+                </div>
+
+            <?php else : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})">
+                            <span>B</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea id="b" name="b" class="materialize-textarea"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra b'})"></textarea>
+                        <label for="textarea1">Alternativa B</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'b']) ?>
+
+                    </div>
+
+                </div>
+            <?php endif ?>
+            <!--Alternativas B-->
+
+
+            <!--Alternativas C -->
+
+
+            <?php if (isset($c)) : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                            <span>C</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea class="materialize-textarea" placeholder="Ex. teste" id="c" name="c"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra c'})"><?= $c ?></textarea>
+                        <label for="textarea1">Alternativa C</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'c']) ?>
+
+                    </div>
+                </div>
+
+            <?php else : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                            <span>C</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea id="c" name="c" class="materialize-textarea"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra c'})"></textarea>
+                        <label for="textarea1">Alternativa C</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'c']) ?>
+
+                    </div>
+
+                </div>
+            <?php endif ?>
+            <!--Alternativas C-->
+
+
+            <!--Alternativas D -->
+
+
+            <?php if (isset($d)) : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                            <span>D</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea class="materialize-textarea" placeholder="Ex. teste" id="d" name="d"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra d'})"><?= $d ?></textarea>
+                        <label for="textarea1">Alternativa D</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'd']) ?>
+
+                    </div>
+                </div>
+
+            <?php else : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                            <span>D</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea id="d" name="d" class="materialize-textarea"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra d'})"></textarea>
+                        <label for="textarea1">Alternativa D</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'd']) ?>
+
+                    </div>
+
+                </div>
+            <?php endif ?>
+            <!--Alternativas D-->
+
+
+            <!--Alternativas E -->
+
+
+            <?php if (isset($e)) : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                            <span>E</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea class="materialize-textarea" placeholder="Ex. teste" id="e" name="e"
+                                  onclick="M.toast({html:  'Insira uma resposta para a letra e'})"><?= $e ?></textarea>
+                        <label for="textarea1">Alternativa E</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'e']) ?>
+
+                    </div>
+                </div>
+
+            <?php else : ?>
+                <div class="row">
+                    <div class="input-field col m1">
+
+                        <label>
+                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                            <span>E</span>
+                        </label>
+
+
+                    </div>
+                    <div class="input-field col m11 s11">
+
+                        <textarea id="e" name="e" class="materialize-textarea"
+                                  onclick="M.toast({html:  'Insira uma resposta para vai a letra e'})"></textarea>
+                        <label for="textarea1">Alternativa E</label>
+
+                        <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'e']) ?>
+
+                    </div>
+
+                </div>
+            <?php endif ?>
+            <!--Alternativas D-->
 
             <!--enviar para banco-->
             <div class="center form">

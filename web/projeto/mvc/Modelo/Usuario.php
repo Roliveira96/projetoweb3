@@ -70,6 +70,7 @@ class Usuario extends Modelo
             $objeto->senha = $registro['senha'];
         }
 
+
         return $objeto;
     }
 
@@ -91,15 +92,21 @@ class Usuario extends Modelo
         $registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
         $objetos = [];
         foreach ($registros as $registro) {
-            $objetos[] = new Usuario(
+            array_push($objetos, array(
+                'nome' => $registro['nome'],
+                'sobrenome' => $registro['sobrenome'],
+                'email' => $registro['email']
+            ));
+            /*$objetos[] = new Usuario(
                 $registro['nome'],
                 $registro['sobrenome'],
-                null,
-                null
-            );
+                $registro['email'],
+                $registro['senha'],
+               null
+            );*/
         }
 
-        //  var_dump($objetos);
+       // var_dump($objetos);
         return $objetos;
     }
 
@@ -134,17 +141,17 @@ class Usuario extends Modelo
 
         //Verifica o tamanho do nome
         if ($this->vereficaTamanhoString($this->nome, 2)) {
-           // var_dump("NOME maior ou igual");
+            // var_dump("NOME maior ou igual");
         } else {
-            var_dump("Nome menor");
-          //  $this->insereError('nome');
+            //var_dump("Nome menor");
+              $this->insereError('nome');
         }
 
         //Verifica o tamanho do sobrenome
         if ($this->vereficaTamanhoString($this->sobrenome, 4)) {
-           // var_dump("SOBRENOME maior ou igual");
+            // var_dump("SOBRENOME maior ou igual");
         } else {
-           // var_dump("Sobrenome menor");
+            // var_dump("Sobrenome menor");
             $this->insereError('sobrenome');
 
 
@@ -152,13 +159,13 @@ class Usuario extends Modelo
 
         //Verifica o tamanho da senha
         if ($this->vereficaTamanhoString($this->senha, 8)) {
-           // var_dump("Senha maior ou igual");
+            // var_dump("Senha maior ou igual");
 
             //Verificando se as senhas confere uma com a outra
             if ($this->senha == $this->senha1) {
                 //var_dump("As senhas confere");
             } else {
-              //  var_dump("As senhas não confere");
+                //  var_dump("As senhas não confere");
                 $this->insereError('senhaDif');
 
             }
@@ -171,15 +178,25 @@ class Usuario extends Modelo
 
 
         if ($this->vereficaTamanhoString($this->email, 8)) {
-          //  var_dump("EMAIL maior ou igual");
+            //  var_dump("EMAIL maior ou igual");
 
 
         } else {
-          //  var_dump("Email menor");
+            //  var_dump("Email menor");
             $this->insereError('email');
 
 
         }
+
+        $array = self::buscarEmail($this->email);
+        var_dump($this->email);
+        if (!$array) {
+            var_dump("Não exite o email ");
+        } else {
+            var_dump("O email já existe em nossa base ");
+            $this->insereError('emailexistente');
+        }
+
 
     }
 
@@ -211,6 +228,9 @@ class Usuario extends Modelo
                 break;
             case  "senhaDif":
                 $this->setErroMensagem('conf', 'As senhas estão diferente!');
+                break;
+            case  "emailexistente":
+                $this->setErroMensagem('email', 'Ops, acho que você já é cadastrado em nosso sistema!');
                 break;
         }
 
