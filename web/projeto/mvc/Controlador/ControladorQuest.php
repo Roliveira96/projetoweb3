@@ -62,12 +62,13 @@ class ControladorQuest extends Controlador
         if ($usuario) {
 
             if (isset($_POST['alternativaCorreta'])) {
-                var_dump("Deu boa existe");
+                //var_dump("Deu boa existe");
                 $alternativaCorreta = $_POST['alternativaCorreta'];
-                echo "Titulo: " . $titulo . " Descrição: " . $descricao . " Dificuldade: " . $dificuldade . " a: " . $a . " b: " . $b . " c: " . $c . " d: " . $d . " e: " . $e . " Alternativa selecionada para ser a correta: " . $alternativaCorreta;
+                // echo "Titulo: " . $titulo . " Descrição: " . $descricao . " Dificuldade: " . $dificuldade . " a: " . $a . " b: " . $b . " c: " . $c . " d: " . $d . " e: " . $e . " Alternativa selecionada para ser a correta: " . $alternativaCorreta;
                 $questao = new Quest(
                     $usuario->getId(),
-                    $titulo, $descricao,
+                    $titulo,
+                    $descricao,
                     $dificuldade,
                     $alternativaCorreta,
                     ["a" => $a, "b" => $b, "c" => $c, "d" => $d, "e" => $e],
@@ -78,16 +79,32 @@ class ControladorQuest extends Controlador
                     echo "è valido";
                 } else {
                     echo "não é valido";
+
+                    $this->setErros($questao->getValidacaoErros());
+                    $this->visao('quest/criar.php',
+
+                        [
+                            'titulo' => $titulo,
+                            'descricao' => $descricao,
+                            'dificuldade' => $dificuldade,
+                            'a' => $a,
+                            'b' => $b,
+                            'c' => $c,
+                            'd' => $d,
+                            'e' => $e,
+                            'alternativaCorreta' => $alternativaCorreta
+
+                        ]
+                    );
                 }
-                exit;
-
-                $questao->vereficaValorVetorTeste();
-
-                $arrayAlternativas = $questao->getAlternativas();
-
-                foreach ($arrayAlternativas as $alternativa) {
-                    echo "<br>" . $alternativa;
-                }
+                echo "fim de teste";
+//                $questao->vereficaValorVetorTeste();
+//
+//                $arrayAlternativas = $questao->getAlternativas();
+//
+//                foreach ($arrayAlternativas as $alternativa) {
+//                    echo "<br>" . $alternativa;
+//                }
 
 
             } else {

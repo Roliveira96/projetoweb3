@@ -163,9 +163,9 @@ class Quest extends Modelo
         }
 
 
-        foreach ($arrayQueVaiParaBanco as $letra => $alternativa) {
-            echo "<br><b>Teste: " . $alternativa . "</b>";
-        }
+//        foreach ($arrayQueVaiParaBanco as $letra => $alternativa) {
+//            echo "<br><b>Teste: " . $alternativa . "</b>";
+//        }
 
 
         if ($contador >= 2) {
@@ -207,7 +207,7 @@ class Quest extends Modelo
             case "titulo" :
                 $this->setErroMensagem('titulo', 'O Titulo deve ter mais que  5 caracteres');
                 break;
-            case  "sobrenome":
+            case  "descricao":
                 $this->setErroMensagem('descricao', 'A descrição deve ter mais que  5 caracteres');
                 break;
             case  "select":

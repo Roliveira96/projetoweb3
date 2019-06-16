@@ -1,5 +1,17 @@
 <h1 class="hide">cod_1999</h1>
-
+<?php
+//echo '<br><b>' . '$titulo --->   ' . $titulo;
+//echo '<br><b>' . '$descricao  --->  ' . $descricao;
+//echo '<br><b>' . '$dificuldade ' . $dificuldade;
+//echo '<br><b>' . 'a --->  ' . $a;
+//echo '<br><b>' . 'b --->  ' . $b;
+//echo '<br><b>' . 'c --->  ' . $c;
+//echo '<br><b>' . 'd --->  ' . $d;
+//echo '<br><b>' . 'e --->  ' . $e;
+//echo '<br><b>' . 'alternativaCorreta --->  ' . $alternativaCorreta
+//
+//
+//?>
 
 <div class="col offset-s3 s6  offset-m3 m6 ">
     <div class="card  darken-1 z-depth-3">
@@ -24,7 +36,7 @@
                                    class="validate">
                             <label for="first_name">Titulo da pergunta</label>
 
-                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
+                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'titulo']) ?>
 
                         </div>
 
@@ -39,24 +51,71 @@
                             <label for="first_name">Titulo da pergunta</label>
 
 
-                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
+                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'titulo']) ?>
 
                         </div>
                     <?php endif ?>
 
 
                     <!-- fim Imput titulo -->
+                    <?php if (isset($dificuldade)) : ?>
+                        <?php
+                        switch ($dificuldade) {
+                            case 'facil':
+                                echo '<div class="input-field col m4 s12">
+                <select name="select" id="select">
+                    <option value="facil">Fácil 😇</option>
+                    <option value="media">Mediana 😅</option>
+                    <option value="dificil">Difícil 😈</option>
+                </select>
+                <label>Nível da questão</label>
 
-                    <div class="input-field col m4 s12">
-                        <select name="select" id="select">
-                            <option value="facil">Fácil 😇</option>
-                            <option value="media">Mediana 😅</option>
-                            <option value="dificil">Difícil 😈</option>
-                        </select>
-                        <label>Nível da questão</label>
+            </div>';
+                                break;
 
-                    </div>
+                            case 'media':
+                                echo ' <div class="input-field col m4 s12">
+                  <select name="select" id="select">
+                      <option value="facil">Fácil 😇</option>
+                      <option selected value="media">Mediana 😅</option>
+                      <option value="dificil">Difícil 😈</option>
+                  </select>
+                  <label>Nível da questão</label>
 
+              </div>';
+                                break;
+
+                            case 'dificil':
+                                echo ' <div class="input-field col m4 s12">
+                    <select name="select" id="select">
+                        <option value="facil">Fácil 😇</option>
+                        <option  value="media">Mediana 😅</option>
+                        <option selected value="dificil">Difícil 😈</option>
+                    </select>
+                    <label>Nível da questão</label>
+
+                </div>';
+                                break;
+
+                            default:
+                                // code...
+                                break;
+                        }
+                        ?>
+
+
+                    <?php else : ?>
+                        <div class="input-field col m4 s12">
+                            <select name="select" id="select">
+                                <option value="facil">Fácil 😇</option>
+                                <option value="media">Mediana 😅</option>
+                                <option value="dificil">Difícil 😈</option>
+                            </select>
+                            <label>Nível da questão</label>
+
+                        </div>
+
+                    <?php endif ?>
 
                     <!-- inicio Imput descricao -->
 
@@ -65,11 +124,11 @@
 
                         <div class="input-field col m12 s12">
 
-                        <textarea class="materialize-textarea" placeholder="Ex. teste" id="textarea1"
+                        <textarea class="materialize-textarea" name="descricao" placeholder="Ex. teste" id="textarea1"
                                   onclick="M.toast({html:  'Na descrição é recomendado sempre detalhar a sua questão, desta forma deixando bem mais compreensivo a questão!'})"><?= $descricao ?></textarea>
                             <label for="textarea1">Descrição da questão</label>
 
-                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
+                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'descricao']) ?>
 
                         </div>
 
@@ -81,7 +140,7 @@
                                   onclick="M.toast({html:  'Na descrição é recomendado sempre detalhar a sua questão, desta forma deixando bem mais compreensivo a questão!'})"></textarea>
                             <label for="textarea1">Descrição da questão</label>
 
-                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
+                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'descricao']) ?>
 
                         </div>
 
@@ -116,7 +175,8 @@
 
             <!-- Modal Trigger -->
             <div class="col m12 center ">
-                <a class="waves-effect waves-light btn modal-trigger center " href="#modal1">Dicas para se criar altenativas</a>
+                <a class="waves-effect waves-light btn modal-trigger center " href="#modal1">Dicas para se criar
+                    altenativas</a>
             </div>
             <!-- Modal Structure -->
             <div id="modal1" class="modal">
@@ -141,7 +201,8 @@
 
                     </p>
                     <p>
-                        ― Pode deixar as alternativas em branco caso não exista mais respostas, porém terá que criar pelo
+                        ― Pode deixar as alternativas em branco caso não exista mais respostas, porém terá que criar
+                        pelo
                         menos duas alternativas obrigatoriamente.
 
 
@@ -164,18 +225,26 @@
             </div>
 
 
-
             <!--Alternativas A-->
 
 
             <?php if (isset($a)) : ?>
                 <div class="row">
                     <div class="input-field col m1">
+                        <?php if ($alternativaCorreta === 'a') : ?>
+                            <label>
+                                <input name="alternativaCorreta" checked value="a" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                                <span>A</span>
+                            </label>
+                        <?php else : ?>
+                            <label>
+                                <input name="alternativaCorreta" value="a" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                                <span>A</span>
+                            </label>
 
-                        <label>
-                            <input name="alternativaCorreta" value="a" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
-                            <span>A</span>
-                        </label>
+                        <?php endif ?>
 
 
                     </div>
@@ -195,7 +264,8 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="alternativaCorreta" value="a" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                            <input name="alternativaCorreta" checked value="a" type="radio"
+                                   onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
                             <span>A</span>
                         </label>
 
@@ -223,8 +293,26 @@
                 <div class="row">
                     <div class="input-field col m1">
 
+
+                        <?php if ($alternativaCorreta === 'b') : ?>
+                            <label>
+                                <input name="alternativaCorreta" checked value="b" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
+                                <span>B</span>
+                            </label>
+                        <?php else : ?>
+                            <label>
+                                <input name="alternativaCorreta" value="b" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
+                                <span>B</span>
+                            </label>
+
+                        <?php endif ?>
+
+
                         <label>
-                            <input name="alternativaCorreta" value="b" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
+                            <input name="alternativaCorreta" value="b" type="radio"
+                                   onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
                             <span>B</span>
                         </label>
 
@@ -246,7 +334,8 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="alternativaCorreta" value="b" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})">
+                            <input name="alternativaCorreta" value="b" type="radio"
+                                   onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})">
                             <span>B</span>
                         </label>
 
@@ -274,10 +363,20 @@
                 <div class="row">
                     <div class="input-field col m1">
 
-                        <label>
-                            <input name="alternativaCorreta" value="c" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
-                            <span>C</span>
-                        </label>
+                        <?php if ($alternativaCorreta === 'c') : ?>
+                            <label>
+                                <input name="alternativaCorreta" checked value="c" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                                <span>C</span>
+                            </label>
+                        <?php else : ?>
+                            <label>
+                                <input name="alternativaCorreta" value="c" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                                <span>C</span>
+                            </label>
+
+                        <?php endif ?>
 
 
                     </div>
@@ -297,7 +396,8 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="alternativaCorreta" value="c" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                            <input name="alternativaCorreta" value="c" type="radio"
+                                   onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
                             <span>C</span>
                         </label>
 
@@ -325,11 +425,20 @@
                 <div class="row">
                     <div class="input-field col m1">
 
-                        <label>
-                            <input name="alternativaCorreta" value="d" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
-                            <span>D</span>
-                        </label>
+                        <?php if ($alternativaCorreta === 'd') : ?>
+                            <label>
+                                <input name="alternativaCorreta" checked value="d" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                                <span>D</span>
+                            </label>
+                        <?php else : ?>
+                            <label>
+                                <input name="alternativaCorreta" value="d" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                                <span>D</span>
+                            </label>
 
+                        <?php endif ?>
 
                     </div>
                     <div class="input-field col m11 s11">
@@ -348,7 +457,8 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="alternativaCorreta" value="d" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                            <input name="alternativaCorreta" value="d" type="radio"
+                                   onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
                             <span>D</span>
                         </label>
 
@@ -375,13 +485,20 @@
             <?php if (isset($e)) : ?>
                 <div class="row">
                     <div class="input-field col m1">
+                        <?php if ($alternativaCorreta === 'e') : ?>
+                            <label>
+                                <input name="alternativaCorreta" checked value="e" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                                <span>E</span>
+                            </label>
+                        <?php else : ?>
+                            <label>
+                                <input name="alternativaCorreta" value="e" type="radio"
+                                       onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                                <span>E</span>
+                            </label>
 
-                        <label>
-                            <input name="alternativaCorreta" value="e" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
-                            <span>E</span>
-                        </label>
-
-
+                        <?php endif ?>
                     </div>
                     <div class="input-field col m11 s11">
 
@@ -399,7 +516,8 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="alternativaCorreta" value="e" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                            <input name="alternativaCorreta" value="e" type="radio"
+                                   onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
                             <span>E</span>
                         </label>
 
