@@ -61,15 +61,15 @@ class Usuario extends Modelo
         $registro = $comando->fetch();
         if ($registro) {
             $objeto = new Usuario(
-                '',
-                '',
+                $registro['nome'],
+                $registro['sobrenome'],
                 $registro['email'],
                 null,
                 $registro['id_usuario']
             );
             $objeto->senha = $registro['senha'];
+            $objeto->id = $registro['id_usuario'];
         }
-
 
         return $objeto;
     }
@@ -106,7 +106,7 @@ class Usuario extends Modelo
             );*/
         }
 
-       // var_dump($objetos);
+        // var_dump($objetos);
         return $objetos;
     }
 
@@ -144,7 +144,7 @@ class Usuario extends Modelo
             // var_dump("NOME maior ou igual");
         } else {
             //var_dump("Nome menor");
-              $this->insereError('nome');
+            $this->insereError('nome');
         }
 
         //Verifica o tamanho do sobrenome
@@ -251,6 +251,10 @@ class Usuario extends Modelo
     public function getSenha()
     {
         return $this->senha;
+    }
+
+    public function  getNome(){
+        return $this->nome;
     }
 
 

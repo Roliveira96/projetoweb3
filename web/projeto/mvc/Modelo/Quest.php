@@ -16,19 +16,28 @@ class Quest extends Modelo
     private $titulo;
     private $descricao;
     private $dificuldade;
+    private $usuario;
+    private $alternativas;
+    private $alternativaCorreta;
     private $img;
 
 
     public function __construct(
+        $usuario,
         $titulo,
         $descricao,
         $dificuldade,
+        $alternativaCorreta,
+        $alternativas,
         $id = null
     )
     {
+        $this->usuario = $usuario;
         $this->titulo = $titulo;
         $this->descricao = $descricao;
         $this->dificuldade = $dificuldade;
+        $this->alternativaCorreta = $alternativaCorreta;
+        $this->alternativas = $alternativas;
         $this->id = $id;
 
     }
@@ -115,64 +124,67 @@ class Quest extends Modelo
     protected function verificarErros()
     {
 
-        //Verifica o tamanho do nome
-        if ($this->vereficaTamanhoString($this->nome, 2)) {
-            // var_dump("NOME maior ou igual");
-        } else {
-            //var_dump("Nome menor");
-            $this->insereError('nome');
+
+        if (!$this->vereficaTamanhoString($this->titulo, 5)) {
+            $this->insereError('titulo');
         }
 
-        //Verifica o tamanho do sobrenome
-        if ($this->vereficaTamanhoString($this->sobrenome, 4)) {
-            // var_dump("SOBRENOME maior ou igual");
-        } else {
-            // var_dump("Sobrenome menor");
-            $this->insereError('sobrenome');
 
-
+        if (!$this->vereficaTamanhoString($this->descricao, 5)) {
+            $this->insereError('descricao');
         }
 
-        //Verifica o tamanho da senha
-        if ($this->vereficaTamanhoString($this->senha, 8)) {
-            // var_dump("Senha maior ou igual");
+        if (!($this->dificuldade === "facil" || $this->dificuldade === "media" || $this->dificuldade === "dificil")) {
+            $this->insereError('select');
+        }
 
-            //Verificando se as senhas confere uma com a outra
-            if ($this->senha == $this->senha1) {
-                //var_dump("As senhas confere");
+
+        $alternativaCorretaQueVaiParaObanco = "";
+       // echo "<br><br><b>Bem vindo ao teste de verefica erros debug mode by Ricardo rsrs</b><br>";
+
+        $arrayQueVaiParaBanco = [];
+        $contador = 0;
+        foreach ($this->alternativas as $letra => $alternativa) {
+            if ($this->vereficaTamanhoString($alternativa, 1)) {
+                $contador++;
+
+               // echo "<br><b>Possitivo: " . $alternativa . " key -->  " . $letra . " </b>";
+                $arrayQueVaiParaBanco[] = $alternativa;
+                if ($letra === $this->alternativaCorreta) {
+                   // echo "<br><b>A alternativa correta é " . $alternativa . " key -->  " . $letra . " Esta é a altenativa correta " . $this->alternativaCorreta . " </b>";
+
+                    $alternativaCorretaQueVaiParaObanco = $contador;
+                    //echo "Alternativa que vai para o banco: " . $alternativaCorretaQueVaiParaObanco;
+                }
             } else {
-                //  var_dump("As senhas não confere");
-                $this->insereError('senhaDif');
+                //echo "<br><b>Negativo: " . $alternativa . "</b>";
 
             }
-
-        } else {
-            $this->insereError('senha');
-            $this->insereError('senha1');
-
         }
 
 
-        if ($this->vereficaTamanhoString($this->email, 8)) {
-            //  var_dump("EMAIL maior ou igual");
-
-
-        } else {
-            //  var_dump("Email menor");
-            $this->insereError('email');
-
-
+        foreach ($arrayQueVaiParaBanco as $letra => $alternativa) {
+            echo "<br><b>Teste: " . $alternativa . "</b>";
         }
 
-        $array = self::buscarEmail($this->email);
-        var_dump($this->email);
-        if (!$array) {
-            var_dump("Não exite o email ");
-        } else {
-            var_dump("O email já existe em nossa base ");
-            $this->insereError('emailexistente');
-        }
 
+        if ($contador >= 2) {
+            if ($alternativaCorretaQueVaiParaObanco) {
+                echo "<h1> Deu boa</h1>";
+            } else {
+                //echo "<h1> Deu ruim è preciso selecionar a uma das questões preenchida</h1>";
+                $this->insereError('alternativasNaoSelecionada');
+
+            }
+            echo "<br><br><b>$contador</b><br>";
+            echo "<br><br><b>Fim de teste</b><br>";
+
+
+        }else{
+            //echo "<h1> Deu ruim precida de 2 ou mais alternativas</h1>";
+            $this->insereError('alternativasMenor2');
+
+        }
 
     }
 
@@ -184,23 +196,28 @@ class Quest extends Modelo
     }
 
 
+    public function vereficaValorVetorTeste()
+    {
+
+    }
+
     private function insereError($campo)
     {
         switch ($campo) {
-            case "nome" :
-                $this->setErroMensagem('nome', 'O nome deve conter mais que 2 letras!');
+            case "titulo" :
+                $this->setErroMensagem('titulo', 'O Titulo deve ter mais que  5 caracteres');
                 break;
             case  "sobrenome":
-                $this->setErroMensagem('sobrenome', 'O sobrenome deve conter mais que 5 letras!');
+                $this->setErroMensagem('descricao', 'A descrição deve ter mais que  5 caracteres');
                 break;
-            case  "senha":
-                $this->setErroMensagem('senha', 'A senha deve conter no minimo 8 caracteres!');
+            case  "select":
+                $this->setErroMensagem('select', 'Selecione pelo menos uma das opções! (Facil, Mediana, Difícil)');
                 break;
-            case  "senha1":
-                $this->setErroMensagem('senha1', 'A senha deve conter no minimo 8 caracteres!');
+            case  "alternativasMenor2":
+                $this->setErroMensagem('alternativa', 'Deve se criar duas ou mais alternativas!');
                 break;
-            case  "email":
-                $this->setErroMensagem('email', 'O email deve conter mais caracteres!');
+            case  "alternativasNaoSelecionada":
+                $this->setErroMensagem('alternativa', 'Ops, deve se selecionar a altenativa correta para continuar!');
                 break;
             case  "senhaDif":
                 $this->setErroMensagem('conf', 'As senhas estão diferente!');
@@ -219,15 +236,29 @@ class Quest extends Modelo
         return $this->id;
     }
 
-    public function getEmail()
+    public function getTitulo()
     {
-        return $this->email;
+        return $this->titulo;
     }
 
-    public function getSenha()
+    public function getDescricao()
     {
-        return $this->senha;
+        return $this->descricao;
     }
 
+    public function getDificuldade()
+    {
+        return $this->dificuldade;
+    }
+
+    public function getAlternativaCorreta()
+    {
+        return $this->alternativaCorreta;
+    }
+
+    public function getAlternativas()
+    {
+        return $this->alternativas;
+    }
 
 }

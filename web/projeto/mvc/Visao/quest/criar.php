@@ -156,6 +156,15 @@
 
             <!-- Modal dica -->
 
+
+            <div class="col m12 center ">
+                <h3 class="center ">Alternativas</h3>
+                <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'alternativa']) ?>
+
+            </div>
+
+
+
             <!--Alternativas A-->
 
 
@@ -164,7 +173,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                            <input name="alternativaCorreta" value="a" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
                             <span>A</span>
                         </label>
 
@@ -186,7 +195,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
+                            <input name="alternativaCorreta" value="a" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra A'})"/>
                             <span>A</span>
                         </label>
 
@@ -215,7 +224,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
+                            <input name="alternativaCorreta" value="b" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})"/>
                             <span>B</span>
                         </label>
 
@@ -237,7 +246,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})">
+                            <input name="alternativaCorreta" value="b" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra B'})">
                             <span>B</span>
                         </label>
 
@@ -266,7 +275,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                            <input name="alternativaCorreta" value="c" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
                             <span>C</span>
                         </label>
 
@@ -288,7 +297,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
+                            <input name="alternativaCorreta" value="c" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra C'})"/>
                             <span>C</span>
                         </label>
 
@@ -317,7 +326,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                            <input name="alternativaCorreta" value="d" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
                             <span>D</span>
                         </label>
 
@@ -339,7 +348,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
+                            <input name="alternativaCorreta" value="d" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra D'})"/>
                             <span>D</span>
                         </label>
 
@@ -368,7 +377,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                            <input name="alternativaCorreta" value="e" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
                             <span>E</span>
                         </label>
 
@@ -390,7 +399,7 @@
                     <div class="input-field col m1">
 
                         <label>
-                            <input name="group1" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
+                            <input name="alternativaCorreta" value="e" type="radio" onclick="M.toast({html:  'A altenativa correta vai ser a letra E'})"/>
                             <span>E</span>
                         </label>
 
@@ -413,7 +422,7 @@
             <!--enviar para banco-->
             <div class="center form">
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Salvar questão
+                <button class="btn waves-effect waves-light pulse" type="submit" name="action">Salvar questão
                     <i class="material-icons right">cloud_done
                     </i>
                 </button>

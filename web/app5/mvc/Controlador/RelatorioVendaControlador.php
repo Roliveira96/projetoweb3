@@ -1,4 +1,4 @@
-<?php$usuario = Usuario::buscarEmail($_POST['email']);
+<?php $usuario = Usuario::buscarEmail($_POST['email']);
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario->getId());
             $this->redirecionar(URL_RAIZ . 'mensagens');
@@ -8,7 +8,70 @@
         }
 namespace Controlador;
 
-use \Modelo\Produto;
+use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    \Modelo\Produto;
 use \Modelo\RelatorioVenda;
 
 class RelatorioVendaControlador extends Controlador

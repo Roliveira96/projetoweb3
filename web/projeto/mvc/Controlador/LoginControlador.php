@@ -62,7 +62,7 @@ class LoginControlador extends Controlador
 
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
-            DW3Sessao::set('usuario', $usuario->getId());
+            DW3Sessao::set('usuario', $usuario);
             $this->visao('quest/index.php', [], 'logado.php');
 
         } else {

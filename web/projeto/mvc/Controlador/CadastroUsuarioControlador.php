@@ -30,7 +30,7 @@ class CadastroUsuarioControlador extends Controlador
         $usuario = new Usuario($nome, $sobrenome, $email, $senha, $senha1);
 
         if ($usuario->isValido()) {
-            var_dump("deu certo");
+          //  var_dump("deu certo");
             $usuario->salvar();
             DW3Sessao::set('usuario', $usuario->getId());
             $this->redirecionar('quest/relatorioPage');
