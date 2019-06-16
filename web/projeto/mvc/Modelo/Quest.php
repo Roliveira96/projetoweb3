@@ -9,7 +9,16 @@ use \Framework\DW3BancoDeDados;
 class Quest extends Modelo
 {
     const BUSCAR_TODOS = 'SELECT * FROM usuarios ';
-    const INSERIR = 'INSERT INTO quest(titulo, descricao, dificuldade) VALUES (?, ? , ? )';
+    const INSERIR = 'INSERT INTO quest(
+        titulo,
+        descricao,
+        dificuldade,
+        idUsuario,
+        posicaoCorreta,
+        quantidadeDeAcertos,
+        quantidadeDeErros, 
+        dataCriacao
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ? )';
     const BUSCAR_POR_EMAIL = 'SELECT * FROM usuarios WHERE email = ? LIMIT 1';
 
     private $id;
@@ -125,12 +134,12 @@ class Quest extends Modelo
     {
 
 
-        if (!$this->vereficaTamanhoString($this->titulo, 5)) {
+        if (!$this->vereficaTamanhoString($this->titulo, 10, 1000)) {
             $this->insereError('titulo');
         }
 
 
-        if (!$this->vereficaTamanhoString($this->descricao, 5)) {
+        if (!$this->vereficaTamanhoString($this->descricao, 10, 1000)) {
             $this->insereError('descricao');
         }
 
@@ -140,48 +149,38 @@ class Quest extends Modelo
 
 
         $alternativaCorretaQueVaiParaObanco = "";
-       // echo "<br><br><b>Bem vindo ao teste de verefica erros debug mode by Ricardo rsrs</b><br>";
 
         $arrayQueVaiParaBanco = [];
         $contador = 0;
         foreach ($this->alternativas as $letra => $alternativa) {
-            if ($this->vereficaTamanhoString($alternativa, 1)) {
+            if ($this->vereficaTamanhoString($alternativa, 1, 200)) {
                 $contador++;
 
-               // echo "<br><b>Possitivo: " . $alternativa . " key -->  " . $letra . " </b>";
                 $arrayQueVaiParaBanco[] = $alternativa;
                 if ($letra === $this->alternativaCorreta) {
-                   // echo "<br><b>A alternativa correta é " . $alternativa . " key -->  " . $letra . " Esta é a altenativa correta " . $this->alternativaCorreta . " </b>";
-
                     $alternativaCorretaQueVaiParaObanco = $contador;
-                    //echo "Alternativa que vai para o banco: " . $alternativaCorretaQueVaiParaObanco;
                 }
             } else {
-                //echo "<br><b>Negativo: " . $alternativa . "</b>";
-
+                $contador++;
+                if (!$this->vereficaTamanhoString($alternativa, 0, 0)) {
+                    $alternativaCorretaQueVaiParaObanco = $contador;
+                    $this->insereError('alternativa');
+                }
             }
         }
-
-
-//        foreach ($arrayQueVaiParaBanco as $letra => $alternativa) {
-//            echo "<br><b>Teste: " . $alternativa . "</b>";
-//        }
-
 
         if ($contador >= 2) {
             if ($alternativaCorretaQueVaiParaObanco) {
                 echo "<h1> Deu boa</h1>";
+
+
             } else {
                 //echo "<h1> Deu ruim è preciso selecionar a uma das questões preenchida</h1>";
-                $this->insereError('alternativasNaoSelecionada');
+              $this->insereError('alternativasNaoSelecionada');
 
             }
-            echo "<br><br><b>$contador</b><br>";
-            echo "<br><br><b>Fim de teste</b><br>";
 
-
-        }else{
-            //echo "<h1> Deu ruim precida de 2 ou mais alternativas</h1>";
+        } else {
             $this->insereError('alternativasMenor2');
 
         }
@@ -189,9 +188,10 @@ class Quest extends Modelo
     }
 
 
-    private function vereficaTamanhoString($palavra, $tamanho)
+    private function vereficaTamanhoString($palavra, $tamanho, $maximo)
     {
-        return strlen($palavra) >= $tamanho;
+        echo "<br><br> <b> Teste tamanho de letras : " .  strlen($palavra) . " Palavra:  " . $palavra . " Validador " . (strlen($palavra) >= $tamanho && strlen($palavra) <= $maximo);
+        return strlen($palavra) >= $tamanho && strlen($palavra) <= $maximo;
 
     }
 
@@ -205,10 +205,10 @@ class Quest extends Modelo
     {
         switch ($campo) {
             case "titulo" :
-                $this->setErroMensagem('titulo', 'O Titulo deve ter mais que  5 caracteres');
+                $this->setErroMensagem('titulo', 'O Titulo deve ter entre 5 e 1000 caracteres');
                 break;
             case  "descricao":
-                $this->setErroMensagem('descricao', 'A descrição deve ter mais que  5 caracteres');
+                $this->setErroMensagem('descricao', 'A descrição deve ter entre 5 e 1000 caracteres');
                 break;
             case  "select":
                 $this->setErroMensagem('select', 'Selecione pelo menos uma das opções! (Facil, Mediana, Difícil)');
@@ -219,8 +219,8 @@ class Quest extends Modelo
             case  "alternativasNaoSelecionada":
                 $this->setErroMensagem('alternativa', 'Ops, deve se selecionar a altenativa correta para continuar!');
                 break;
-            case  "senhaDif":
-                $this->setErroMensagem('conf', 'As senhas estão diferente!');
+            case  "alternativa":
+                $this->setErroMensagem('alternativa', 'As alternativas devem ter entre 5 e 200 caracteres');
                 break;
             case  "emailexistente":
                 $this->setErroMensagem('email', 'Ops, acho que você já é cadastrado em nosso sistema!');
