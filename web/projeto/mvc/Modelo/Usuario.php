@@ -138,17 +138,13 @@ class Usuario extends Modelo
 
         //Verifica o tamanho do nome
         if ($this->vereficaTamanhoString($this->nome, 2)) {
-            // var_dump("NOME maior ou igual");
         } else {
-            //var_dump("Nome menor");
             $this->insereError('nome');
         }
 
         //Verifica o tamanho do sobrenome
         if ($this->vereficaTamanhoString($this->sobrenome, 4)) {
-            // var_dump("SOBRENOME maior ou igual");
         } else {
-            // var_dump("Sobrenome menor");
             $this->insereError('sobrenome');
 
 
@@ -156,13 +152,11 @@ class Usuario extends Modelo
 
         //Verifica o tamanho da senha
         if ($this->vereficaTamanhoString($this->senha, 8)) {
-            // var_dump("Senha maior ou igual");
+
 
             //Verificando se as senhas confere uma com a outra
             if ($this->senha == $this->senha1) {
-                //var_dump("As senhas confere");
             } else {
-                //  var_dump("As senhas não confere");
                 $this->insereError('senhaDif');
 
             }
@@ -175,22 +169,17 @@ class Usuario extends Modelo
 
 
         if ($this->vereficaTamanhoString($this->email, 8)) {
-            //  var_dump("EMAIL maior ou igual");
 
 
         } else {
-            //  var_dump("Email menor");
             $this->insereError('email');
 
 
         }
 
         $array = self::buscarEmail($this->email);
-        var_dump($this->email);
         if (!$array) {
-            var_dump("Não exite o email ");
         } else {
-            var_dump("O email já existe em nossa base ");
             $this->insereError('emailexistente');
         }
 

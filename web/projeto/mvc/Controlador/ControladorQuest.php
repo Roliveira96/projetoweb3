@@ -94,22 +94,6 @@ class ControladorQuest extends Controlador
 
 
 
-
-          //  $questoes = Quest::buscarPorId($usuario->getId());
-
-
-//
-//            $this->visao('quest/responder.php',
-//                [
-//
-//                    'questoes' =>  $paginacao['questoes'],
-//                    'pagina' => $paginacao['pagina'],
-//                    'ultimaPagina' => $paginacao['ultimaPagina'],
-////                    'questoes' => $questoes,
-//
-//                ],
-//                'logado.php');
-
         } else {
             $this->redirecionar(URL_RAIZ . 'login');
         }
@@ -124,9 +108,6 @@ class ControladorQuest extends Controlador
 
         if ($usuario) {
 
-            //$questoes = Quest::buscarTodos($limit, $offset);
-
-//$facil =  Quest::categoriaFacil()
 
             $this->visao('quest/relatorio.php', [
 

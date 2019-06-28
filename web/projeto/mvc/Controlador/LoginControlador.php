@@ -21,20 +21,14 @@ class LoginControlador extends Controlador
 
         }
 
-
     }
 
 
     public function loginPageAPI()
     {
-        //Mudar o header quando for redirecionar para html
         header('Content-Type: application/json');
-
         $usuarios = Usuario::buscarTodos();
 
-        // $this->visao('login/index.php');
-
-        //Mudar para o metodo da api
         echo json_encode($usuarios);
 
     }
@@ -50,8 +44,6 @@ class LoginControlador extends Controlador
 
     public function login()
     {
-
-
         setcookie('emailLogin', $_POST['usuario'], time() + 600);
 
         $usuario = Usuario::buscarEmail($_POST['usuario']);
@@ -59,7 +51,7 @@ class LoginControlador extends Controlador
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario);
-          // $this->visao('quest/index.php', [], 'logado.php');
+
            $this->redirecionar(URL_RAIZ . 'quest');
 
 

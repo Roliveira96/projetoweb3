@@ -15,9 +15,6 @@ class ControladorRelatorio extends Controlador
         $usuario = DW3Sessao::get('usuario');
 
 
-
-
-
         if ($usuario) {
 
             $relatorio = Relatorio::filtroCategoria($_GET);
