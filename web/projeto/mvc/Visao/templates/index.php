@@ -30,7 +30,7 @@
         <div class="container">
             <div class="nav-wrapper">
 
-                <a href="#" class="brand-logo ">Logo</a>
+                <a href="#" class="brand-logo ">Sistema de Perguntas</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?= URL_RAIZ ?>">home</a></li>
                     <li><a href="<?= URL_RAIZ . 'login' ?>">login</a></li>
@@ -79,7 +79,7 @@
 
     <div class="footer-copyright">
         <div class="container">
-            © 2014 Copyright Text
+            © 2019 Copyright Ricardo de Oliveira - Universidade Tecnológica Federal do Paraná - UTFPR
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </div>

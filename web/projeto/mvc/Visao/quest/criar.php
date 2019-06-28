@@ -1,17 +1,17 @@
 <h1 class="hide">cod_1999</h1>
+
+
+
 <?php
-//echo '<br><b>' . '$titulo --->   ' . $titulo;
-//echo '<br><b>' . '$descricao  --->  ' . $descricao;
-//echo '<br><b>' . '$dificuldade ' . $dificuldade;
-//echo '<br><b>' . 'a --->  ' . $a;
-//echo '<br><b>' . 'b --->  ' . $b;
-//echo '<br><b>' . 'c --->  ' . $c;
-//echo '<br><b>' . 'd --->  ' . $d;
-//echo '<br><b>' . 'e --->  ' . $e;
-//echo '<br><b>' . 'alternativaCorreta --->  ' . $alternativaCorreta
-//
-//
-//?>
+if ($sucesso) : ?>
+    <div class="animated zoomOutUp faster delay-5s">
+        <div class="card-panel teal lighten-2 center text-darken-2">    <?= $sucesso ?>
+        </div>
+    </div>
+<?php endif ?>
+
+
+
 
 <div class="col offset-s3 s6  offset-m3 m6 ">
     <div class="card  darken-1 z-depth-3">
@@ -154,21 +154,52 @@
             <!--imagem perfil-->
 
 
-            <div class="row">
-                <div class="input-field col offset-s2 s12  m12  ">
+            <?php if (isset($foto)) : ?>
 
-                    <div class="file-field input-field">
-                        <div class="btn">
-                            <span>Imagem para a questão</span>
-                            <input id="img" name="img" type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                <div class="row">
+                    <div class="input-field col offset-s2 s12  m12  ">
+
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Imagem para a questão</span>
+                                <input id="img" name="img" type="file">
+                            </div>
+
+                            <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'foto']) ?>
+
                         </div>
                     </div>
+
                 </div>
 
-            </div>
+
+
+
+            <?php else : ?>
+
+                <div class="row">
+                    <div class="input-field col offset-s2 s12  m12  ">
+
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Imagem para a questão</span>
+                                <input id="img" name="img" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            <?php endif ?>
+
+
+
+
+
 
 
             <!-- Modal dica -->

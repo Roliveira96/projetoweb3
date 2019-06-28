@@ -3,7 +3,7 @@
 const APLICACAO_NOME = 'Super Relatórios';
 
 // Se a URL_RAIZ mudar, verifique arquivo .htaccess
-const URL_RAIZ = '/web3/app5/';
+const URL_RAIZ = '/web/app5/';
 
 // Os caminhos sempre devem terminar com '/'
 

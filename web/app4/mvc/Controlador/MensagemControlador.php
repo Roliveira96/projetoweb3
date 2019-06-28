@@ -35,6 +35,8 @@ class MensagemControlador extends Controlador
             DW3Sessao::get('usuario'),
             $_POST['texto']
         );
+
+
         if ($mensagem->isValido()) {
             $mensagem->salvar();
             DW3Sessao::setFlash('mensagemFlash', 'Mensagem cadastrada.');

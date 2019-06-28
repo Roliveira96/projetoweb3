@@ -29,7 +29,7 @@
         <div class="container">
             <div class="nav-wrapper">
 
-                <a href="#" class="brand-logo ">Logo</a>
+                <a href="#" class="brand-logo ">Sistema de Perguntas</a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?= URL_RAIZ ?>">home</a></li>
@@ -55,7 +55,11 @@
                         <img src="<?= URL_IMG . 'fundo.jpg' ?>">
                     </div>
 
-                    <a href="#user"><img class="circle" src="<?= URL_IMG . 'login.png' ?>"></a>
+                    <a href="#user">
+              
+                      <img class="circle" src="<?php $usuario = \Framework\DW3Sessao::get("usuario");
+                     echo URL_IMG .  $usuario->getImagem();?>">
+                    </a>
                     <a href="#name"><span class="white-text name">
 
                             <?php $usuario = \Framework\DW3Sessao::get("usuario");
@@ -107,7 +111,7 @@
 
     <div class="footer-copyright">
         <div class="container">
-            © 2014 Copyright Text
+            © 2019 Copyright Ricardo de Oliveira - Universidade Tecnológica Federal do Paraná - UTFPR
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </div>
@@ -120,4 +124,3 @@
 <script type="text/javascript" src="<?= URL_JS . 'main.js' ?>"></script>
 </body>
 </html>
-

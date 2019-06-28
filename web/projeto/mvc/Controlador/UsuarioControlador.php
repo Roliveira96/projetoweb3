@@ -5,7 +5,7 @@ namespace Controlador;
 use Framework\DW3Sessao;
 use \Modelo\Usuario;
 
-class CadastroUsuarioControlador extends Controlador
+class UsuarioControlador extends Controlador
 {
 
     private $errors = ['erros' => 'Foram encontrado alguns erros'];
@@ -27,12 +27,14 @@ class CadastroUsuarioControlador extends Controlador
         $senha = $_POST['senha'];
         $senha1 = $_POST['senha1'];
         $email = $_POST['email'];
-        $usuario = new Usuario($nome, $sobrenome, $email, $senha, $senha1);
+        $foto = array_key_exists('foto', $_FILES) ? $_FILES['foto'] : null;
+
+        $usuario = new Usuario($nome, $sobrenome, $email, $senha, $senha1,null, $foto);
 
         if ($usuario->isValido()) {
           //  var_dump("deu certo");
             $usuario->salvar();
-            DW3Sessao::set('usuario', $usuario->getId());
+            DW3Sessao::set('usuario', $usuario);
             $this->redirecionar('quest/relatorioPage');
 
         } else {

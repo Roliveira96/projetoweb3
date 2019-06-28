@@ -18,6 +18,7 @@ class Usuario extends Modelo
     private $email;
     private $senha;
     private $senhaCripto;
+    private $img;
 
     public function __construct(
         $nome,
@@ -25,7 +26,9 @@ class Usuario extends Modelo
         $email,
         $senha,
         $senha1,
-        $id = null
+        $id = null,
+        $img
+
     )
     {
         $this->nome = $nome;
@@ -35,17 +38,20 @@ class Usuario extends Modelo
         $this->senha1 = $senha1;
         $this->id = $id;
         $this->senhaCripto = password_hash($senha, PASSWORD_BCRYPT);
+        $this->img = $img;
     }
 
 
     public function inserir()
     {
+
+
         DW3BancoDeDados::getPdo()->beginTransaction();
         $comando = DW3BancoDeDados::prepare(self::INSERIR);
         $comando->bindValue(1, $this->nome, PDO::PARAM_STR);
         $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
         $comando->bindValue(3, $this->email, PDO::PARAM_STR);
-        $comando->bindValue(4, $this->senha, PDO::PARAM_STR);
+        $comando->bindValue(4, $this->senhaCripto, PDO::PARAM_STR);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
@@ -65,7 +71,9 @@ class Usuario extends Modelo
                 $registro['sobrenome'],
                 $registro['email'],
                 null,
-                $registro['id_usuario']
+                null,
+                $registro['id_usuario'],
+                null
             );
             $objeto->senha = $registro['senha'];
             $objeto->id = $registro['id_usuario'];
@@ -77,14 +85,8 @@ class Usuario extends Modelo
     public function verificarSenha($senhaPlana)
     {
 
-        //  return password_verify($senhaPlana, $this->senha);
-        //  var_dump("senha Plana --> " .$this->senha);
-        // var_dump("senha  --> " .$senhaPlana);
+        return password_verify($senhaPlana, $this->senha);
 
-        if ($this->senha == $senhaPlana)
-            return true;
-        else
-            false;
     }
 
     public static function buscarTodos()
@@ -97,16 +99,10 @@ class Usuario extends Modelo
                 'sobrenome' => $registro['sobrenome'],
                 'email' => $registro['email']
             ));
-            /*$objetos[] = new Usuario(
-                $registro['nome'],
-                $registro['sobrenome'],
-                $registro['email'],
-                $registro['senha'],
-               null
-            );*/
+
         }
 
-        // var_dump($objetos);
+
         return $objetos;
     }
 
@@ -120,19 +116,20 @@ class Usuario extends Modelo
 
     public function getImagem()
     {
-        $imagemNome = "{$this->id}.png";
-        if (!DW3ImagemUpload::existe($imagemNome)) {
-            $imagemNome = 'padrao.png';
+        $img = "$this->id .png";
+        if (!DW3ImagemUpload::existe($img)) {
+            $img = 'padrao.png';
         }
-        return $imagemNome;
+        return $img;
     }
 
 
     private function salvarImagem()
     {
-        if (DW3ImagemUpload::isValida($this->foto)) {
-            $nomeCompleto = PASTA_PUBLICO . "img/{$this->id}.png";
-            DW3ImagemUpload::salvar($this->foto, $nomeCompleto);
+
+        if (DW3ImagemUpload::isValida($this->img)) {
+            $nomeCompleto = PASTA_PUBLICO . "img/$this->id .png";
+            DW3ImagemUpload::salvar($this->img, $nomeCompleto);
         }
     }
 
@@ -253,7 +250,8 @@ class Usuario extends Modelo
         return $this->senha;
     }
 
-    public function  getNome(){
+    public function getNome()
+    {
         return $this->nome;
     }
 

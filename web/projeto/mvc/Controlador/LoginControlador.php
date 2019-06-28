@@ -17,7 +17,8 @@ class LoginControlador extends Controlador
             $this->visao('login/index.php');
 
         } else {
-            $this->visao('quest/index.php', [], 'logado.php');
+            $this->redirecionar(URL_RAIZ . 'quest');
+
         }
 
 
@@ -51,11 +52,6 @@ class LoginControlador extends Controlador
     {
 
 
-        // Criando Cookies
-        $nome = "masterdaweb";
-        $valor = "Cookie Criado com Sucesso";
-        $expira = time() + 3600;
-
         setcookie('emailLogin', $_POST['usuario'], time() + 600);
 
         $usuario = Usuario::buscarEmail($_POST['usuario']);
@@ -63,7 +59,9 @@ class LoginControlador extends Controlador
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario);
-            $this->visao('quest/index.php', [], 'logado.php');
+          // $this->visao('quest/index.php', [], 'logado.php');
+           $this->redirecionar(URL_RAIZ . 'quest');
+
 
         } else {
             $this->setErros(['login' => 'Usuário ou senha inválido.']);

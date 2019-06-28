@@ -12,7 +12,7 @@
 
                 <div class="center-block site">
 
-                    <form action="<?= URL_RAIZ . 'cadastroUsuario' ?>" method="post" class="form-inline pull-left">
+                    <form action="<?= URL_RAIZ . 'cadastroUsuario' ?>" method="post" class="form-inline pull-left" enctype="multipart/form-data">
 
                         <div class="form ">
                             <img class="img_login" src="<?= URL_IMG . 'login.png' ?>">

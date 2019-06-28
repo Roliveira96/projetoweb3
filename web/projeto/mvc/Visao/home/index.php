@@ -6,7 +6,7 @@
             <section class="fullsize-video-bg">
                 <div id="video-viewport">
                     <video width="1920" height="1280" autoplay muted loop>
-                        <source src="https://storage.googleapis.com/coverr-main/mp4/Winter-Grass.mp4" type="video/mp4" />
+                        <source src="https://static.videezy.com/system/resources/previews/000/036/901/original/hand-touch12.mp4" type="video/mp4" />
                         <source src="https://storage.googleapis.com/coverr-main/webm/Winter-Grass.webm" type="video/webm" />
                     </video>
                 </div>

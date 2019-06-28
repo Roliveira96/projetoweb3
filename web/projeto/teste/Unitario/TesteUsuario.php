@@ -12,7 +12,7 @@ class TesteUsuario extends Teste
 
     public function testeInserir()
     {
-        $usuario = new Usuario('Bruna', 'Schwab', 'bruna@bruna.com', '12345');
+        $usuario = new Usuario('Ricardo', 'Martins', 'ricardo@gamilc.com', '123456789', '123456789', null, null);
         $usuario->salvar();
         $query = DW3BancoDeDados::query('SELECT * FROM usuarios');
         $baseUsuario = $query->fetch();
@@ -20,12 +20,28 @@ class TesteUsuario extends Teste
         $this->verificar($query->rowCount() == 1);
     }
 
-//    public function testeBuscarTodos()
-//    {
-//        (new Pedido('1', '1'))->salvar();
-//        (new Pedido('2', '2'))->salvar();
-//        $pedidos = Pedido::buscarTodos();
-//        $this->verificar(count($pedidos) == 2);
-//    }
+
+    public function testeEmail()
+    {
+        $usuario = new Usuario('Ricardo', 'Martins', 'ricardo@gmail.com', '123456789', '123456789', null, null);
+        $usuario->salvar();
+
+        $this->verificar('ricardo@gmail.com' === $usuario->getEmail());
+    }
+
+    public function testeBuscarTodos()
+    {
+        $ricardo = new Usuario('Ricardo', 'Martins', 'ricardo@gmail.com', '123456789', '123456789', null, null);
+        $bruna = new Usuario('Bruna', 'Camomila', 'bruna@gmail.com', '123456789', '123456789', null, null);
+        $ricardo->salvar();
+        $bruna->salvar();
+
+        $testes = Usuario::buscarTodos();
+        foreach ($testes as $teste){
+
+    }
+
+    }
+
 
 }

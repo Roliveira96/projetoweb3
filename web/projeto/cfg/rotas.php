@@ -18,14 +18,11 @@ $rotas = [
 
     '/cadastroUsuario' => [
 
-        'GET' => '\Controlador\CadastroUsuarioControlador#index',
-        'POST' => '\Controlador\CadastroUsuarioControlador#armazenar',
+        'GET' => '\Controlador\UsuarioControlador#index',
+        'POST' => '\Controlador\UsuarioControlador#armazenar',
 
     ],
 
-    '/perfil' => [
-        'GET' => '\Controlador\PerfilControlador#index',
-    ],
 
     '/sair' => [
         'GET' => '\Controlador\LoginControlador#destruirLogin',
@@ -46,10 +43,13 @@ $rotas = [
 
     '/quest/responderPage' => [
         'GET' => '\Controlador\ControladorQuest#responderPageQuest',
+        'POST' => '\Controlador\ControladorQuest#respostaQuest',
     ],
 
+
+
     '/quest/relatorioPage' => [
-        'GET' => '\Controlador\ControladorQuest#relatorioPageQuest',
+        'GET' => '\Controlador\ControladorRelatorio#index',
     ],
 
 ];

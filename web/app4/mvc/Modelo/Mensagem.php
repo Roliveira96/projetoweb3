@@ -89,6 +89,7 @@ class Mensagem extends Modelo
         $comando->bindValue(2, $offset, PDO::PARAM_INT);
         $comando->execute();
         $registros = $comando->fetchAll();
+
         $objetos = [];
         foreach ($registros as $registro) {
             $usuario = new Usuario(

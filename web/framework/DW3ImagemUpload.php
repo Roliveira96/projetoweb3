@@ -38,6 +38,7 @@ class DW3ImagemUpload
     /* Verifica se existe a imagem já salva na pasta img */
     public static function existe($imagemNome)
     {
+
         return file_exists(PASTA_PUBLICO . "img/$imagemNome");
     }
 }

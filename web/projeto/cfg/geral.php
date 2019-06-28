@@ -1,6 +1,6 @@
 <?php
 
-const APLICACAO_NOME = 'QuizUTF';
+const APLICACAO_NOME = 'Sistema de Perguntas';
 
 // Se a URL_RAIZ mudar, verifique arquivo .htaccess
 const URL_RAIZ = '/web/projeto/';
