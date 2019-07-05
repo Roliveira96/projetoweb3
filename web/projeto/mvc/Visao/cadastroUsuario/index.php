@@ -6,7 +6,7 @@
     <h6 class="center">Por favor entre com suas informações corretamente</h6>
 
 
-    <div class="col offset-s2 s8  offset-m2 m8 ">
+    <div class="col  s12  offset-m2 m8 ">
         <div class="card  darken-1 z-depth-3">
             <div class="card-content">
 

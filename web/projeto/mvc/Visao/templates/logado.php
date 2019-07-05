@@ -27,13 +27,14 @@
 <header>
     <nav>
         <div class="container">
-            <div class="nav-wrapper">
+            <div class="navbar-fixed">
 
                 <a href="#" class="brand-logo ">Sistema de Perguntas</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"> <img class="icons" src="<?= URL_IMG . 'icons/baseline-menu-24px.svg' ?>"></i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?= URL_RAIZ ?>">home</a></li>
-                    <li><a href="<?= URL_RAIZ . 'quest' ?>">questões</a></li>
+                    <li><a href="<?= URL_RAIZ . 'questao' ?>">questões</a></li>
                     <li><a href="<?= URL_RAIZ . 'sair' ?>">sair</a></li>
 
                 </ul>
@@ -42,6 +43,12 @@
             </div>
         </div>
     </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="<?= URL_RAIZ ?>">home</a></li>
+        <li><a href="<?= URL_RAIZ . 'questao' ?>">questões</a></li>
+        <li><a href="<?= URL_RAIZ . 'sair' ?>">sair</a></li>
+    </ul>
 </header>
 
 
@@ -56,20 +63,32 @@
                     </div>
 
                     <a href="#user">
-              
-                      <img class="circle" src="<?php $usuario = \Framework\DW3Sessao::get("usuario");
-                     echo URL_IMG .  $usuario->getImagem();?>">
+
+                        <img class="circle" src="<?php $usuario = \Framework\DW3Sessao::get("usuario");
+                        echo URL_IMG . $usuario->getImagem(); ?>">
                     </a>
                     <a href="#name"><span class="white-text name">
 
                             <?php $usuario = \Framework\DW3Sessao::get("usuario");
-                           echo $usuario->getNome();?>
+                            echo $usuario->getNome(); ?>
 
                         </span></a>
                     <a href="#email"><span class="white-text email">
 
                           <?php $usuario = \Framework\DW3Sessao::get("usuario");
-                          echo $usuario->getEmail();?>
+                          echo $usuario->getEmail(); ?>
+
+
+                        </span></a>
+                    <a href="#email"><span class="white-text email">
+<b>Você acertou
+                          <?php $usuario = \Framework\DW3Sessao::get("usuario");
+                          echo $usuario->getAcertos() . ' '; ?> questões.</b>
+
+                        </span></a> <a href="#email"><span class="white-text email">
+<b>Você errou
+                          <?php $usuario = \Framework\DW3Sessao::get("usuario");
+                          echo $usuario->getErros() . ' '; ?> questões.</b>
 
 
                         </span></a>
@@ -77,14 +96,20 @@
                 </div>
 
             </li>
-            <li><a href="<?= URL_RAIZ . 'quest/criarPage' ?>"><i class="material-icons">add_circle</i>Criar perguntas</a></li>
-            <li><a href="<?= URL_RAIZ . 'quest/responderPage' ?>"><i class="material-icons">chat</i>Responder</a></li>
+            <li><a href="<?= URL_RAIZ . 'questao/criarPagina' ?>"><i class="material-icons"><img class="icons" src="<?= URL_IMG . 'icons/add.svg' ?>"></i>Criar
+                    perguntas</a></li>
+            <li><a href="<?= URL_RAIZ . 'questao/minhasQuestoesPagina' ?>"><i class="material-icons"><img class="icons" src="<?= URL_IMG . 'icons/edit.svg' ?>"></i>Minhas
+                    perguntas</a></li>
+
 
             <li>
-                <div class="divider">sdgds</div>
+                <div class="divider"></div>
             </li>
+            <li><a href="<?= URL_RAIZ . 'questao/responderPagina' ?>"><i class="material-icons"><img class="icons" src="<?= URL_IMG . 'icons/chat.svg' ?>"></i>Responder</a></li>
 
-            <li><a href="<?= URL_RAIZ . 'quest/relatorioPage' ?>"><i class="material-icons">report </i>Relatório</a></li>
+
+            <li><a href="<?= URL_RAIZ . 'questao/relatorioPagina' ?>"><i class="material-icons"><img class="icons" src="<?= URL_IMG . 'icons/report.svg' ?>"> </i>Relatório</a>
+            </li>
         </ul>
 
 
@@ -92,7 +117,7 @@
            class="sidenav-trigger btn-floating btn-large waves-effect waves-light black">
 
 
-            <i class="medium material-icons ">menu</i></a>
+            <i class="medium material-icons "><img class="icom_menu" src="<?= URL_IMG . 'icons/baseline-menu-24px.svg' ?>"></i></a>
 
 
     </div>
@@ -112,14 +137,55 @@
     <div class="footer-copyright">
         <div class="container">
             © 2019 Copyright Ricardo de Oliveira - Universidade Tecnológica Federal do Paraná - UTFPR
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+
+
+            <!-- Modal Trigger -->
+            <a class="grey-text text-lighten-4   modal-trigger right" data-target="modal1" href="#modal1">Mais
+                Informações</a>
+
         </div>
     </div>
 
 </footer>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<div id="modal1" class="modal text-darken-2">
+
+    <div class="row center">
+        <img class="img_perfil" src="<?php echo URL_IMG . 'login.png' ?>">
+    </div>
+
+    <div class="modal-content text-darken-2 center">
+        <ul>
+            <li><b>Aluno: Ricardo Martins de Oliveira</b></li>
+            <li><b>Curso Tsi - Tecnologia em sistemas para internet</b></li>
+            <li><b>Diciplina Web III</b></li>
+            <li><b>Universidade Tecnológica Federal do Paraná - UTFPR</b></li>
+        </ul>
+        <hr>
+        <div class="center">
+            <a href="http://portal.utfpr.edu.br/" target="_blank"></a></b>
+            <a class="social " id="facebook" href="https://www.facebook.com/ricardo.deoliveira.35/" target="_blank"></a>
+            <a class="social" id="linkdin" href="https://www.linkedin.com/in/ricardodeoliveira96/" target="_blank"></a>
+            <a class="social" id="github" href="https://github.com/Roliveira96/" target="_blank"></a>
+            <a class="social" id="instagram" href="https://www.instagram.com/ricardo_de_oliveira96/?hl=pt-br/"
+               target="_blank"></a>
+
+        </div>
+
+
+        <div class="center">
+            <a href="http://portal.utfpr.edu.br//" target="_blank"> <img class="img_perfil"
+                                                                         src="<?php echo URL_IMG . 'utfpr.jpeg' ?>"></a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="<?= URL_JS . 'jquery.js' ?>"></script>
 <script type="text/javascript" src="<?= URL_JS . 'materialize.min.js' ?>"></script>
 <script type="text/javascript" src="<?= URL_JS . 'main.js' ?>"></script>
 </body>

@@ -1,40 +1,218 @@
 body {
-    background: #b92b27 ;
-    background: -webkit-linear-gradient(to right, #1565C0, #b92b27) !important;
-    background: linear-gradient(to right, #1565C0, #b92b27);  !important;
+    background: #b92b27;
+    background: -webkit-linear-gradient(to right, #1565C0, #b92b27) ;
+    background: linear-gradient(to right, #1565C0, #b92b27);
+    background: linear-gradient(-75deg,#21D4FD, #B721FF,#EE7752, #E73C7E, #23A6D5, #23D5AB, #00d4ff, #090979,#ff00ec ) ;
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 95s ease infinite;
+    -moz-animation: Gradient 95s ease infinite;
+    animation: Gradient 95s ease infinite;
 }
 
-nav , footer
-{
-    background-color: black !important;
-}
-
-.imagensQuest
-{
-    width: 100%  !important;
-    height: 200px  !important;
+.icons-buttons{
+    margin: 5px 0 0 0;
+width: 25px;
+    color: red;
 
 }
+.icons{
+    margin: 14px 0 0 0;
+    width: 25px;
+}
 
 
-.tituloCard{
+.icons_menu{
+    margin: 10px 0 0 0;
+width: 35px;
+}
+
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
+
+nav, footer {
+    background-color: #0f0f0f !important;
+}
+
+
+.div_teste{
+    width:200px;
+    height: 200px;
+    position:absolute;
+    z-index:100;
+    top:15%;
+    left:85.5%;
+}
+
+
+.erro{
+    width:100%;
+    position:absolute;
+    z-index:99 !important;
+    top:7%;
+    left:0%;
+}
+
+.img_no{
+    width:100%;
+    height: 100%;
+    background-image: url("../img/no.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+}
+.img_yes{
+    width:100%;
+    height: 100%;
+    background-image: url("../img/sim.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+}
+
+.certo {
+    border-color: green !important;
+    border-width: 10px !important;
+    border-radius: 10px !important;
+}
+
+.emoj {
+    font-size: 50px;
+}
+
+.errado {
+    border-color: red !important;
+    border-width: 1px !important;
+    border-radius: 10px !important;
+}
+
+
+.imagensQuest img{
+    width: 100% !important;
+    height: 200px !important;
+    image-rendering: auto;
+
+
+}
+
+
+a.social {
+    position: relative;
+    display: inline-block;
+    margin: .333rem .25rem;
+    border-radius: .75rem;
+    color: #fff;
+
+    text-decoration: none;
+    text-align: center;
+    line-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 0;
+    transition: color .333s;
+}
+
+a.social::after {
+    font-family: 'fontawesome', sans-serif;
+    font-size: 1.25rem;
+
+}
+
+a.social::before {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    border-radius: .6000rem;
+    content: '';
+}
+
+#facebook {
+    background-image: url("../img/facebook.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#linkdin {
+    background-image: url("../img/linkdin.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#github {
+    background-image: url("../img/git.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#instagram {
+    background-image: url("../img/insta.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#facebook {
+    background-image: url("../img/facebook.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}#utfpr {
+
+    background-image: url("../img/utfpr.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+     width: 50% !important;
+}
+
+.tituloCard {
     background-color: rgba(1, 3, 1, 0.62) !important;
 
 }
-.error{
+
+.error {
     background-color: rgba(255, 100, 102, 0.37) !important;
 
-    color:  red !important;
+    color: red !important;
 }
 
 
-
-textarea:focus , text:focus , input:focus{
-    color : black !important;
+textarea:focus, text:focus, input:focus {
+    color: black !important;
 }
 
-input , select , textarea {
-    color : black !important;
+input, select, textarea {
+    color: black !important;
 }
 
 
@@ -46,19 +224,27 @@ input , select , textarea {
 
 /*espaçamento do form*/
 
-.form{
+.form {
     margin: 5%;
 }
 
 
-.img_login
-{
+.img_login {
     width: 40%;
     margin: 0 0 0 30%;
     align-items: center;
 }
 
-btn_entrar{
+.img_perfil {
+    width: 20% !important;
+    margin: 5% 0 0 0%;
+    align-items: center;
+}
+
+
+
+
+btn_entrar {
 
 
 }
@@ -68,8 +254,8 @@ btn_entrar{
 #video-viewport {
     position: absolute;
     transform: translateX(1) translateY(1);
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
     overflow: hidden;
     z-index: -5;
@@ -155,7 +341,6 @@ video
 Css home teste
 
 -->
-
 
 
 h1.main, p.demos {
@@ -288,7 +473,7 @@ h1.main, p.demos {
 
 .sp-circle-link {
 
-   position: absolute;
+    position: absolute;
     /*display:block;*/
     left: 50%;
     bottom: 20%;

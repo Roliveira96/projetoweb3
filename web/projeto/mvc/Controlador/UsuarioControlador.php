@@ -35,7 +35,7 @@ class UsuarioControlador extends Controlador
           //  var_dump("deu certo");
             $usuario->salvar();
             DW3Sessao::set('usuario', $usuario);
-            $this->redirecionar('quest/relatorioPage');
+            $this->redirecionar('questao/relatorioPage');
 
         } else {
 

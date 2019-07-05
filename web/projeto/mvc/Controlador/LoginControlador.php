@@ -17,7 +17,7 @@ class LoginControlador extends Controlador
             $this->visao('login/index.php');
 
         } else {
-            $this->redirecionar(URL_RAIZ . 'quest');
+            $this->redirecionar(URL_RAIZ . 'questao');
 
         }
 
@@ -52,7 +52,7 @@ class LoginControlador extends Controlador
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario);
 
-           $this->redirecionar(URL_RAIZ . 'quest');
+           $this->redirecionar(URL_RAIZ . 'questao');
 
 
         } else {

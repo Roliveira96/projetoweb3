@@ -18,9 +18,9 @@
 
             <h2 class="frame-3">Seja forte!</h2>
 
-            <h2 class="frame-4">Seja agil!</h2>
+            <h2 class="frame-4">Seja ágil!</h2>
 
-            <h2 class="frame-5"><span>Resolva.</span> <span>Crie.</span> <span>Desafia seus concorentes.</span>
+            <h2 class="frame-5"><span>Resolva,</span> <span>crie,</span> <span>desafia seus oponentes</span>
 
 
             </h2>

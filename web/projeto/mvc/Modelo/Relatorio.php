@@ -11,8 +11,8 @@ class Relatorio extends Modelo
 {
 
 
-    const  BUSCAR_MAIS_ACERTO = 'SELECT * FROM (select * from quest where dificuldade = ?  order by quantidadesDeAcertos desc )DATAIN LIMIT 1; ';
-    const  BUSCAR_MAIS_ERRO = 'SELECT * FROM (select * from quest where dificuldade = ?  order by quantidadeDeErros desc )DATAIN LIMIT 1;';
+    const  BUSCAR_MAIS_ACERTO = 'SELECT * FROM (select * from questoes where dificuldade = ?  order by quantidade_acerto desc )DATAIN LIMIT 1; ';
+    const  BUSCAR_MAIS_ERRO = 'SELECT * FROM (select * from questoes where dificuldade = ?  order by quantidade_erro desc )DATAIN LIMIT 1;';
 
 
     public static function filtroCategoria($categoria = [])
@@ -29,17 +29,17 @@ class Relatorio extends Modelo
         $registro = $comando->fetch();
 
 
-        $acertos = new Quest(
+        $acertos = new Questao(
 
             $registro['id_usuario'],
             $registro['id_usuario'],
             $registro['titulo'],
             $registro['descricao'],
             $registro['dificuldade'],
-            $registro['alternativaCorreta'],
+            $registro['alternativa_correta'],
             null,
             null,
-            $registro['id_quest']
+            $registro['id_questao']
         );
 
 
@@ -48,17 +48,17 @@ class Relatorio extends Modelo
         $comando->execute();
         $registro = $comando->fetch();
 
-        $erros = new Quest(
+        $erros = new Questao(
 
             $registro['id_usuario'],
             $registro['id_usuario'],
             $registro['titulo'],
             $registro['descricao'],
             $registro['dificuldade'],
-            $registro['alternativaCorreta'],
+            $registro['alternativa_correta'],
             null,
             null,
-            $registro['id_quest']
+            $registro['id_questao']
         );
 
 

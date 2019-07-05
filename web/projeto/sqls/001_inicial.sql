@@ -1,4 +1,4 @@
-CREATE DATABASE projeto COLLATE 'utf8_unicode_ci';
+CREATE DATABASE sistema_de_perguntas COLLATE 'utf8_unicode_ci';
 
 create table if not exists usuarios
 (
@@ -11,28 +11,28 @@ create table if not exists usuarios
 ) ENGINE = InnoDB;
 
 
-CREATE table if not exists quest
+CREATE table if not exists questoes
 (
-    id_quest             int auto_increment,
+    id_questao             int auto_increment,
     id_usuario           int           not null,
     titulo               varchar(255)  NOT NULL,
     descricao            varchar(1000) not null,
     dificuldade          varchar(25)   not null,
-    alternativaCorreta   varchar(255)  not null,
-    dataCriacao          TIMESTAMP     not null,
-    quantidadesDeAcertos int           not null,
-    quantidadeDeErros    int           not null,
+    alternativa_correta   varchar(255)  not null,
+    data_criacao          TIMESTAMP     not null,
+    quantidade_acerto int           not null,
+    quantidade_erro    int           not null,
     FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
-    PRIMARY KEY (id_quest)
+    PRIMARY KEY (id_questao)
 ) ENGINE = InnoDB;
 
 
 CREATE TABLE if not exists alternativas
 (
     id_alternativa int auto_increment,
-    id_quest       int          not null,
+    id_questao       int          not null,
     alternativa    varchar(255) NOT NULL,
-    FOREIGN KEY (id_quest) REFERENCES quest (id_quest),
+    FOREIGN KEY (id_questao) REFERENCES questoes (id_questao),
     PRIMARY KEY (id_alternativa)
 ) ENGINE = InnoDB;
 
@@ -40,13 +40,13 @@ CREATE TABLE if not exists alternativas
 
 CREATE TABLE if not exists respostas
 (
-    id_respostas int auto_increment,
+    id_resposta int auto_increment,
     id_usuario   int          not null,
-    id_quest     int          not null,
-    dataResposta TIMESTAMP    not null,
+    id_questao     int          not null,
+    data_resposta TIMESTAMP    not null,
     acertou      boolean      not null,
     alternativa  varchar(255) not null,
-    FOREIGN KEY (id_quest) REFERENCES quest (id_quest),
+    FOREIGN KEY (id_questao) REFERENCES questoes (id_questao),
     FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
-    PRIMARY KEY (id_respostas)
+    PRIMARY KEY (id_resposta)
 ) ENGINE = InnoDB;

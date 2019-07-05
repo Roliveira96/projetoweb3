@@ -56,14 +56,6 @@ class MensagemControlador extends Controlador
 
     public function destruir($id)
     {
-        $this->verificarLogado();
-        $mensagem = Mensagem::buscarId($id);
-        if ($mensagem->getUsuarioId() == $this->getUsuario()) {
-            Mensagem::destruir($id);
-            DW3Sessao::setFlash('mensagemFlash', 'Mensagem destruida.');
-        } else {
-            DW3Sessao::setFlash('mensagemFlash', 'Você não pode deletar as mensagens dos outros.');
-        }
-        $this->redirecionar(URL_RAIZ . 'mensagens');
+       var_dump("Deu boas");
     }
 }

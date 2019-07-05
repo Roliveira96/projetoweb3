@@ -11,11 +11,15 @@ class Usuario extends Modelo
     const BUSCAR_TODOS = 'SELECT * FROM usuarios ';
     const INSERIR = 'INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES (?, ? , ? , ?)';
     const BUSCAR_POR_EMAIL = 'SELECT * FROM usuarios WHERE email = ? LIMIT 1';
+    const CONTAR_ACERTOS = 'select count(acertou) from respostas where id_usuario = ?  and acertou = 1';
+    const CONTAR_ERROS = 'select count(acertou) from respostas where id_usuario = ?  and acertou = 0';
 
     private $id;
     private $nome;
     private $sobrenome;
     private $email;
+    private $acertos;
+    private $erros;
     private $senha;
     private $senhaCripto;
     private $img;
@@ -56,7 +60,6 @@ class Usuario extends Modelo
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
-
 
     public static function buscarEmail($email)
     {
@@ -137,17 +140,12 @@ class Usuario extends Modelo
     {
 
         //Verifica o tamanho do nome
-        if ($this->vereficaTamanhoString($this->nome, 2)) {
-        } else {
+        if (!$this->vereficaTamanhoString($this->nome, 2)) {
             $this->insereError('nome');
         }
-
         //Verifica o tamanho do sobrenome
-        if ($this->vereficaTamanhoString($this->sobrenome, 4)) {
-        } else {
+        if (!$this->vereficaTamanhoString($this->sobrenome, 4)) {
             $this->insereError('sobrenome');
-
-
         }
 
         //Verifica o tamanho da senha
@@ -155,8 +153,7 @@ class Usuario extends Modelo
 
 
             //Verificando se as senhas confere uma com a outra
-            if ($this->senha == $this->senha1) {
-            } else {
+            if (!$this->senha == $this->senha1) {
                 $this->insereError('senhaDif');
 
             }
@@ -168,18 +165,14 @@ class Usuario extends Modelo
         }
 
 
-        if ($this->vereficaTamanhoString($this->email, 8)) {
+        if (!$this->vereficaTamanhoString($this->email, 8)) {
 
-
-        } else {
             $this->insereError('email');
-
 
         }
 
         $array = self::buscarEmail($this->email);
-        if (!$array) {
-        } else {
+        if ($array) {
             $this->insereError('emailexistente');
         }
 
@@ -243,6 +236,37 @@ class Usuario extends Modelo
     {
         return $this->nome;
     }
+
+
+
+    public function getAcertos()
+    {
+
+
+        $comando = DW3BancoDeDados::prepare(self::CONTAR_ACERTOS);
+        $comando->bindValue(1, $this->id, PDO::PARAM_STR);
+        $comando->execute();
+        $registro = $comando->fetch();
+        $this->acertos = $registro[0];
+        return $this->acertos;
+    }
+
+
+
+    public function getErros()
+    {
+        $comando = DW3BancoDeDados::prepare(self::CONTAR_ERROS);
+        $comando->bindValue(1, $this->id, PDO::PARAM_STR);
+        $comando->execute();
+        $registro = $comando->fetch();
+        $this->erros = $registro[0];
+
+        return $this->erros;
+    }
+
+
+
+
 
 
 }

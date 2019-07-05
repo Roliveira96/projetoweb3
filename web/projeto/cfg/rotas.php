@@ -28,28 +28,36 @@ $rotas = [
         'GET' => '\Controlador\LoginControlador#destruirLogin',
     ],
 
-    '/quest' => [
-        'GET' => '\Controlador\ControladorQuest#index',
+    '/questao' => [
+        'GET' => '\Controlador\QuestaoControlador#index',
     ],
 
-    '/quest_no_logado' => [
-        'GET' => '\Controlador\ControladorQuest#noLogado',
+    '/questao_no_logado' => [
+        'GET' => '\Controlador\QuestaoControlador#noLogado',
     ],
 
-    '/quest/criarPage' => [
-        'GET' => '\Controlador\ControladorQuest#criarPageQuest',
-        'POST' => '\Controlador\ControladorQuest#salvarQuest'
+    '/questao/criarPagina' => [
+        'GET' => '\Controlador\QuestaoControlador#criarPaginaQuestao',
+        'POST' => '\Controlador\QuestaoControlador#salvarQuestao'
     ],
 
-    '/quest/responderPage' => [
-        'GET' => '\Controlador\ControladorQuest#responderPageQuest',
-        'POST' => '\Controlador\ControladorQuest#respostaQuest',
+    '/questao/responderPagina' => [
+        'GET' => '\Controlador\QuestaoControlador#responderPaginaQuestao',
+        'POST' => '\Controlador\QuestaoControlador#respostaQuestao',
     ],
 
 
 
-    '/quest/relatorioPage' => [
-        'GET' => '\Controlador\ControladorRelatorio#index',
+    '/questao/relatorioPagina' => [
+        'GET' => '\Controlador\RelatorioControlador#index',
     ],
 
+    '/questao/minhasQuestoesPagina' => [
+        'GET' => '\Controlador\MinhasQuestoesControlador#index',
+        'POST' => '\Controlador\MinhasQuestoesControlador#editar',
+    ],
+
+    '/questao/minhasQuestaoPagina/?' => [
+        'DELETE' => '\Controlador\MinhasQuestoesControlador#destruir',
+    ],
 ];

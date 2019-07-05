@@ -14,6 +14,7 @@ trait DW3ControladorVisao
 	/* Usado na visão para saber se o campo possui um erro */
 	protected function temErro($campoNome)
 	{
+
 		return array_key_exists($campoNome, $this->erros);
 	}
 

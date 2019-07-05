@@ -6,7 +6,7 @@
     <h6 class="center">Por favor entre com suas informações</h6>
 
 
-    <div class="col offset-s3 s6  offset-m3 m6 ">
+    <div class="col  s12  offset-m3 m6 ">
         <div class="card  darken-1 z-depth-3">
             <div class="card-content">
 
@@ -46,8 +46,9 @@
 
                         <div class="center form">
 
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
+                                <i class="material-icons right"> <img class="icons-buttons" src="<?= URL_IMG . 'icons/send.svg' ?>">
+                                </i>
                             </button>
                         </div>
 
@@ -55,11 +56,12 @@
                     </form>
 
                 </div>
+                <h6 class="center"><a href="<?= URL_RAIZ . 'cadastroUsuario' ?>">Crie sua conta gratuitamente!</a></h6>
+
             </div>
         </div>
     </div>
 
 
 </div>
-<h6 class="center"><a href="<?= URL_RAIZ . 'cadastroUsuario' ?>">Crie sua conta gratuitamente!</a></h6>
 
