@@ -42,11 +42,9 @@ $rotas = [
     ],
 
     '/questao/responderPagina' => [
-        'GET' => '\Controlador\QuestaoControlador#responderPaginaQuestao',
+        'GET' => '\Controlador\QuestaoControlador#responderFiltro',
         'POST' => '\Controlador\QuestaoControlador#respostaQuestao',
     ],
-
-
 
     '/questao/relatorioPagina' => [
         'GET' => '\Controlador\RelatorioControlador#index',

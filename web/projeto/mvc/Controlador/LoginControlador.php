@@ -14,6 +14,7 @@ class LoginControlador extends Controlador
         $usuarioID = DW3Sessao::get('usuario');
 
         if (!$usuarioID) {
+
             $this->visao('login/index.php');
 
         } else {
@@ -44,9 +45,12 @@ class LoginControlador extends Controlador
 
     public function login()
     {
-        setcookie('emailLogin', $_POST['usuario'], time() + 600);
+        $email = htmlentities($_POST['usuario']);
 
-        $usuario = Usuario::buscarEmail($_POST['usuario']);
+
+        setcookie('emailLogin', $email, time() + 600);
+
+        $usuario = Usuario::buscarEmail($email);
 
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {

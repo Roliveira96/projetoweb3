@@ -23,7 +23,7 @@ q.quantidade_acerto, q.quantidade_erro, u.id_usuario, u.nome, u.sobrenome, u.ema
 
 FROM questoes q JOIN usuarios u ON (q.id_usuario = u.id_usuario) 
 
-where q.id_usuario != ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
+where q.id_usuario != ? ORDER BY (q.dificuldade = ? )  desc ,q.id_questao  desc  LIMIT ? OFFSET ?;
 ';
 
 
@@ -310,13 +310,15 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     }
 
 //Busca todas as questões menos as do User
-    public static function buscarPorId($limit = 4, $offset = 0, $id)
+    public static function buscarPorId($limit = 4, $offset = 0, $id , $dificuldade)
     {
+
 
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_TODOS_ID_PAGAINACAO);
         $comando->bindValue(1, $id, PDO::PARAM_INT);
-        $comando->bindValue(2, $limit, PDO::PARAM_INT);
-        $comando->bindValue(3, $offset, PDO::PARAM_INT);
+        $comando->bindValue(2, $dificuldade, PDO::PARAM_STR);
+        $comando->bindValue(3, $limit, PDO::PARAM_INT);
+        $comando->bindValue(4, $offset, PDO::PARAM_INT);
         $comando->execute();
         $objetos = [];
 

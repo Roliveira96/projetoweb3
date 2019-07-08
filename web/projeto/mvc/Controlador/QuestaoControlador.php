@@ -32,11 +32,14 @@ class QuestaoControlador extends Controlador
 
     private function calcularPaginacao($id)
     {
+
+        $dificuldade = DW3Sessao::get('filtroDificuldade');
+
         if ($id) {
             $pagina = array_key_exists('p', $_GET) ? intval($_GET['p']) : 1;
             $limit = 4;
             $offset = ($pagina - 1) * $limit;
-            $questoes = Questao::buscarPorId($limit, $offset, $id);
+            $questoes = Questao::buscarPorId($limit, $offset, $id, $dificuldade);
             $ultimaPagina = ceil(Questao::contarTodosId($id) / $limit);
             return compact('pagina', 'questoes', 'ultimaPagina');
 
@@ -73,6 +76,7 @@ class QuestaoControlador extends Controlador
     public function responderPaginaQuestao()
     {
 
+
         $usuario = DW3Sessao::get('usuario');
         if ($usuario) {
 
@@ -99,6 +103,45 @@ class QuestaoControlador extends Controlador
             $this->redirecionar(URL_RAIZ . 'login');
         }
 
+    }
+
+    public function responderFiltro()
+    {
+
+        $usuario = DW3Sessao::get('usuario');
+
+
+        if ($usuario) {
+            if (isset($_GET['select'])) {
+                if (!DW3Sessao::get('filtroDificuldade')) {
+                    DW3Sessao::set('filtroDificuldade', 'facil');
+
+                } else {
+                    DW3Sessao::set('filtroDificuldade', $_GET['select']);
+                }
+            }
+
+            $paginacao = $this->calcularPaginacao($usuario->getId());
+
+            $flash = DW3Sessao::getFlash('flash');
+            $valores = DW3Sessao::get('acertou');
+
+            //$acertou = $paginacao['questoes'];
+
+
+            $this->visao('questao/responder.php', [
+                'questoes' => $paginacao['questoes'],
+
+                'pagina' => $paginacao['pagina'],
+                'ultimaPagina' => $paginacao['ultimaPagina'],
+                'flash' => $flash,
+                'valores' => $valores
+            ], 'logado.php');
+
+
+        } else {
+            $this->redirecionar(URL_RAIZ . 'login');
+        }
 
     }
 
@@ -124,6 +167,7 @@ class QuestaoControlador extends Controlador
 
         $usuario = DW3Sessao::get('usuario');
         if ($usuario) {
+
 
             $id_quest = $_POST['id_quest'];
             $pagina = $_POST['pagina'];
@@ -197,14 +241,15 @@ class QuestaoControlador extends Controlador
 
         $foto = array_key_exists('foto', $_FILES) ? $_FILES['foto'] : null;
 
-        $titulo = $_POST['titulo'];
-        $descricao = $_POST['descricao'];
-        $dificuldade = $_POST['select'];
-        $a = $_POST['a'];
-        $b = $_POST['b'];
-        $c = $_POST['c'];
-        $d = $_POST['d'];
-        $e = $_POST['e'];
+        $titulo = htmlentities($_POST['titulo']);
+        $descricao = htmlentities($_POST['descricao']);
+        $dificuldade = htmlentities($_POST['select']);
+        $a = htmlentities($_POST['a']);
+        $b = htmlentities($_POST['b']);
+        $c = htmlentities($_POST['c']);
+        $d = htmlentities($_POST['d']);
+        $e = htmlentities($_POST['e']);
+        $e = htmlentities($_POST['e']);
 
         $foto = array_key_exists('img', $_FILES) ? $_FILES['img'] : null;
 

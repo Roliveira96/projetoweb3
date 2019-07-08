@@ -140,16 +140,30 @@ class Usuario extends Modelo
     {
 
         //Verifica o tamanho do nome
-        if (!$this->vereficaTamanhoString($this->nome, 2)) {
+        if (!$this->verificaTamanhoString($this->nome, 2)) {
             $this->insereError('nome');
         }
         //Verifica o tamanho do sobrenome
-        if (!$this->vereficaTamanhoString($this->sobrenome, 4)) {
+        if (!$this->verificaTamanhoString($this->sobrenome, 4)) {
             $this->insereError('sobrenome');
         }
+        //Verifica email
+        if (!preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $this->email)) {
+            $this->insereError('emailInvalido');
+        }
+        //Verifica Nome correto
+        if (!$this->verificaLetrasString($this->nome)) {
+            $this->insereError('nomeInvalido');
+        }
+        //Verifica Sobrenome Correto
+        if (!$this->verificaLetrasString($this->sobrenome)) {
+            $this->insereError('sobrenomeInvalido');
+        }
+
+
 
         //Verifica o tamanho da senha
-        if ($this->vereficaTamanhoString($this->senha, 8)) {
+        if ($this->verificaTamanhoString($this->senha, 8)) {
 
 
             //Verificando se as senhas confere uma com a outra
@@ -165,7 +179,7 @@ class Usuario extends Modelo
         }
 
 
-        if (!$this->vereficaTamanhoString($this->email, 8)) {
+        if (!$this->verificaTamanhoString($this->email, 8)) {
 
             $this->insereError('email');
 
@@ -179,8 +193,18 @@ class Usuario extends Modelo
 
     }
 
+    private function verificaLetrasString($string)
+    {
 
-    private function vereficaTamanhoString($palavra, $tamanho)
+        if (preg_match('/^[a-zA-Z á]*$/', $string)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private function verificaTamanhoString($palavra, $tamanho)
     {
         return strlen($palavra) >= $tamanho;
 
@@ -211,6 +235,15 @@ class Usuario extends Modelo
             case  "emailexistente":
                 $this->setErroMensagem('email', 'Ops, acho que você já é cadastrado em nosso sistema!');
                 break;
+            case  "emailInvalido":
+                $this->setErroMensagem('email', 'Eita, acho que você inseriu um email que não é um email!');
+                break;
+            case  "nomeInvalido":
+                $this->setErroMensagem('nome', 'Oxi, eu desconfio que seu nome esteja errado, somente letras são permitido');
+                break;
+            case  "sobrenomeInvalido":
+                $this->setErroMensagem('sobrenome', 'Óia, eu desconfio que seu sobrenome esteja errado, somente letras são permitido');
+                break;
         }
 
 
@@ -238,7 +271,6 @@ class Usuario extends Modelo
     }
 
 
-
     public function getAcertos()
     {
 
@@ -252,7 +284,6 @@ class Usuario extends Modelo
     }
 
 
-
     public function getErros()
     {
         $comando = DW3BancoDeDados::prepare(self::CONTAR_ERROS);
@@ -263,10 +294,6 @@ class Usuario extends Modelo
 
         return $this->erros;
     }
-
-
-
-
 
 
 }

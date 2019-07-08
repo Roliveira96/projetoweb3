@@ -1,29 +1,59 @@
 body {
     background: #b92b27;
-    background: -webkit-linear-gradient(to right, #1565C0, #b92b27) ;
+    background: -webkit-linear-gradient(to right, #1565C0, #b92b27);
     background: linear-gradient(to right, #1565C0, #b92b27);
-    background: linear-gradient(-75deg,#21D4FD, #B721FF,#EE7752, #E73C7E, #23A6D5, #23D5AB, #00d4ff, #090979,#ff00ec ) ;
+    background: linear-gradient(-75deg, #21D4FD, #B721FF, #EE7752, #E73C7E, #23A6D5, #23D5AB, #00d4ff, #090979, #ff00ec);
     background-size: 400% 400%;
     -webkit-animation: Gradient 95s ease infinite;
     -moz-animation: Gradient 95s ease infinite;
     animation: Gradient 95s ease infinite;
 }
 
-.icons-buttons{
+.facil {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    width: 15%;
+    height: 2%;
+    background-color: #15ee33;
+    border-radius: 10px;
+}
+.media {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    width: 15%;
+    height: 2%;
+    background-color: #eede0e;
+    border-radius: 10px;
+}
+.dificil {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    width: 15%;
+    height: 2%;
+    background-color: #ee0007;
+    border-radius: 10px;
+}
+
+
+.icons-buttons {
     margin: 5px 0 0 0;
-width: 25px;
+    width: 25px;
     color: red;
 
 }
-.icons{
+
+.icons {
     margin: 14px 0 0 0;
     width: 25px;
 }
 
 
-.icons_menu{
+.icons_menu {
     margin: 10px 0 0 0;
-width: 35px;
+    width: 35px;
 }
 
 
@@ -64,40 +94,40 @@ width: 35px;
 }
 
 
-
 nav, footer {
     background-color: #0f0f0f !important;
 }
 
 
-.div_teste{
-    width:200px;
+.div_teste {
+    width: 200px;
     height: 200px;
-    position:absolute;
-    z-index:100;
-    top:15%;
-    left:85.5%;
+    position: absolute;
+    z-index: 100;
+    top: 15%;
+    left: 85.5%;
 }
 
 
-.erro{
-    width:100%;
-    position:absolute;
-    z-index:99 !important;
-    top:7%;
-    left:0%;
+.erro {
+    width: 100%;
+    position: absolute;
+    z-index: 99 !important;
+    top: 7%;
+    left: 0%;
 }
 
-.img_no{
-    width:100%;
+.img_no {
+    width: 100%;
     height: 100%;
     background-image: url("../img/no.gif");
     background-repeat: no-repeat;
     background-size: contain;
     width: 100%;
 }
-.img_yes{
-    width:100%;
+
+.img_yes {
+    width: 100%;
     height: 100%;
     background-image: url("../img/sim.gif");
     background-repeat: no-repeat;
@@ -122,7 +152,7 @@ nav, footer {
 }
 
 
-.imagensQuest img{
+.imagensQuest img {
     width: 100% !important;
     height: 200px !important;
     image-rendering: auto;
@@ -168,31 +198,37 @@ a.social::before {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 #linkdin {
     background-image: url("../img/linkdin.svg");
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 #github {
     background-image: url("../img/git.svg");
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 #instagram {
     background-image: url("../img/insta.svg");
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 #facebook {
     background-image: url("../img/facebook.svg");
     background-size: cover;
     background-repeat: no-repeat;
-}#utfpr {
+}
+
+#utfpr {
 
     background-image: url("../img/utfpr.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
-     width: 50% !important;
+    width: 50% !important;
 }
 
 .tituloCard {
@@ -240,8 +276,6 @@ input, select, textarea {
     margin: 5% 0 0 0%;
     align-items: center;
 }
-
-
 
 
 btn_entrar {

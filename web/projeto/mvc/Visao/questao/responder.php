@@ -30,6 +30,21 @@
             <div class="row">
                 <div class="col s12 m12 center"><h3>Responde se for capaz! <span class="emoj">😎 </span></h3></div>
             </div>
+
+
+            <div class="row center">
+                <div class="col s12 m12 center">
+                    <form action="<?= URL_RAIZ . 'questao/responderPagina' ?>" method="get"
+                          class="form-inline pull-left">
+
+                        <?php $this->incluirVisao('util/select.php', []) ?>
+                        <button type="submit" class="btn btn-primary center-block largura100">Filtrar</button>
+
+                    </form>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="row">
 
@@ -72,8 +87,9 @@
                         <div class="card-content">
 
                             <h5 class="">
-                                <?php echo $questao->getDescricao() . "<hr>";    ?>
+                                <?php echo $questao->getDescricao() . "<hr>"; ?>
                             </h5>
+                            <p class="<?= $questao->getDificuldade() ?>"><?= $questao->getDificuldade() ?></p>
                         </div>
 
                         <?php if ($questao->getAtributosQuestRespondida()) : ?>
@@ -104,7 +120,8 @@
                                 <li>
 
 
-                                    <div class="collapsible-header"><i class="material-icons"><img class="icom-menu" src="<?= URL_IMG . 'icons/edit.svg' ?>"></i>Responder
+                                    <div class="collapsible-header"><i class="material-icons"><img class="icom-menu"
+                                                                                                   src="<?= URL_IMG . 'icons/edit.svg' ?>"></i>Responder
                                     </div>
                                     <div class="collapsible-body">
 
@@ -113,7 +130,6 @@
 
                                             <input type="hidden" name="id_quest"
                                                    value="<?php echo $questao->getId() ?>">
-
 
 
                                             <input type="hidden" name="pagina" value="<?php echo $pagina ?>">
@@ -137,7 +153,8 @@
                                             <div class="center">
                                                 <button class="btn waves-effect waves-light" type="submit"
                                                         name="action">Salvar
-                                                    <i class="material-icons right"><img class="icom-menu" src="<?= URL_IMG . 'icons/send.svg' ?>"></i>
+                                                    <i class="material-icons right"><img class="icom-menu"
+                                                                                         src="<?= URL_IMG . 'icons/send.svg' ?>"></i>
                                                 </button>
                                             </div>
 
@@ -148,41 +165,45 @@
                         <?php endif; ?>
                     </div>
 
-            </div>
-
-            <?php endforeach ?>
-            <?php else: ?>
-
-                <div class="col s12 m12">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">Ops....</span>
-                            <p>Me desculpe, mas... não temos questões para responder!
-                                Porém poderá criar diversas questões para seus amigos possam responder! 😉</p>
-                        </div>
-
-                    </div>
                 </div>
 
+                <?php endforeach ?>
+                <?php else: ?>
 
-            <?php endif; ?>
+                    <div class="col s12 m12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Ops....</span>
+                                <p>Me desculpe, mas... não temos questões para responder!
+                                    Porém poderá criar diversas questões para seus amigos possam responder! 😉</p>
+                            </div>
 
+                        </div>
+                    </div>
+
+
+                <?php endif; ?>
+
+
+            </div>
 
         </div>
 
+        <div class="row center">
+            <?php if ($pagina > 1) : ?>
+                </a> <img class="icons-buttons" src="<?= URL_IMG . 'icons/esquerda.svg' ?>">
+
+                <a href="<?= URL_RAIZ . 'questao/responderPagina?p=' . ($pagina - 1) ?>" class="btn btn-default">Página
+                    anterior</a>
+            <?php endif ?>
+            <?php if ($pagina < $ultimaPagina) : ?>
+                <a href="<?= URL_RAIZ . 'questao/responderPagina?p=' . ($pagina + 1) ?>" class="btn btn-default">Próxima
+                    página
+                </a> <img class="icons-buttons" src="<?= URL_IMG . 'icons/direita.svg' ?>">
+
+            <?php endif ?>
+        </div>
+
+
     </div>
-
-    <div class="row center">
-        <?php if ($pagina > 1) : ?>
-            <a href="<?= URL_RAIZ . 'questao/responderPagina?p=' . ($pagina - 1) ?>" class="btn btn-default">Página
-                anterior</a>
-        <?php endif ?>
-        <?php if ($pagina < $ultimaPagina) : ?>
-            <a href="<?= URL_RAIZ . 'questao/responderPagina?p=' . ($pagina + 1) ?>" class="btn btn-default">Próxima
-                página</a>
-        <?php endif ?>
-    </div>
-
-
-</div>
 </div>

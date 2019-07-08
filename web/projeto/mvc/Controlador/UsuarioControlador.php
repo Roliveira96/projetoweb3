@@ -21,21 +21,21 @@ class UsuarioControlador extends Controlador
     public function armazenar()
     {
 
+        $nome = htmlentities($_POST['nome']);
+        $sobrenome = htmlentities($_POST['sobrenome']);
+        $senha = htmlentities($_POST['senha']);
+        $senha1 = htmlentities($_POST['senha1']);
+        $email = htmlentities($_POST['email']);
 
-        $nome = $_POST['nome'];
-        $sobrenome = $_POST['sobrenome'];
-        $senha = $_POST['senha'];
-        $senha1 = $_POST['senha1'];
-        $email = $_POST['email'];
+
         $foto = array_key_exists('foto', $_FILES) ? $_FILES['foto'] : null;
 
-        $usuario = new Usuario($nome, $sobrenome, $email, $senha, $senha1,null, $foto);
+        $usuario = new Usuario($nome, $sobrenome, $email, $senha, $senha1, null, $foto);
 
         if ($usuario->isValido()) {
-          //  var_dump("deu certo");
             $usuario->salvar();
             DW3Sessao::set('usuario', $usuario);
-            $this->redirecionar('questao/relatorioPage');
+            $this->redirecionar('questao/relatorioPagina');
 
         } else {
 

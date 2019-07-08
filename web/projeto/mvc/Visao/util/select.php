@@ -1,5 +1,6 @@
 <?php
 //var_dump( "Teste do campo: ".$campo);
+
 if (isset($dificuldade)) {
     switch ($dificuldade) {
         case 'facil':
