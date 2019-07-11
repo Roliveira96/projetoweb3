@@ -21,8 +21,8 @@ class UsuarioControlador extends Controlador
     public function armazenar()
     {
 
-        $nome = htmlentities($_POST['nome']);
-        $sobrenome = htmlentities($_POST['sobrenome']);
+        $nome = $_POST['nome'];
+        $sobrenome = $_POST['sobrenome'];
         $senha = htmlentities($_POST['senha']);
         $senha1 = htmlentities($_POST['senha1']);
         $email = htmlentities($_POST['email']);
@@ -35,7 +35,7 @@ class UsuarioControlador extends Controlador
         if ($usuario->isValido()) {
             $usuario->salvar();
             DW3Sessao::set('usuario', $usuario);
-            $this->redirecionar('questao/relatorioPagina');
+            $this->redirecionar('questao');
 
         } else {
 

@@ -1,4 +1,4 @@
-<h1 class="hide">cod_1999</h1>
+<h1 class="hide">criar_questao</h1>
 
 
     <?php if (isset($gif)) : ?>
@@ -115,9 +115,7 @@ if ($sucesso) : ?>
                 </div>';
                                 break;
 
-                            default:
-                                // code...
-                                break;
+
                         }
                         ?>
 
@@ -142,7 +140,7 @@ if ($sucesso) : ?>
 
                         <div class="input-field col m12 s12">
 
-                        <textarea class="materialize-textarea" name="descricao" placeholder="Ex. teste" id="textarea1"
+                        <textarea class="materialize-textarea" name="descricao" placeholder="Ex. teste" id="textArrea"
                                   onclick="M.toast({html:  'Na descrição é recomendado sempre detalhar a sua questão, desta forma deixando bem mais compreensivo a questão!'})"><?= $descricao ?></textarea>
                             <label for="textarea1">Descrição da questão</label>
 
@@ -156,7 +154,7 @@ if ($sucesso) : ?>
 
                         <textarea id="descricao" name="descricao" class="materialize-textarea"
                                   onclick="M.toast({html:  'Na descrição é recomendado sempre detalhar a sua questão, desta forma deixando bem mais compreensivo a questão!'})"></textarea>
-                            <label for="textarea1">Descrição da questão</label>
+                            <label for="descricao">Descrição da questão</label>
 
                             <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'descricao']) ?>
 
@@ -294,7 +292,7 @@ if ($sucesso) : ?>
 
                         <textarea class="materialize-textarea" placeholder="Ex. teste" id="a" name="a"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra a'})"><?= $a ?></textarea>
-                        <label for="textarea1">Alternativa A</label>
+                        <label for="a">Alternativa A</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'a']) ?>
 
@@ -317,7 +315,7 @@ if ($sucesso) : ?>
 
                         <textarea id="a" name="a" class="materialize-textarea"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra a'})"></textarea>
-                        <label for="textarea1">Alternativa A</label>
+                        <label for="a">Alternativa A</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'a']) ?>
 
@@ -364,7 +362,7 @@ if ($sucesso) : ?>
 
                         <textarea class="materialize-textarea" placeholder="Ex. teste" id="b" name="b"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra b'})"><?= $b ?></textarea>
-                        <label for="textarea1">Alternativa B</label>
+                        <label for="b">Alternativa B</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'b']) ?>
 
@@ -387,7 +385,7 @@ if ($sucesso) : ?>
 
                         <textarea id="b" name="b" class="materialize-textarea"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra b'})"></textarea>
-                        <label for="textarea1">Alternativa B</label>
+                        <label for="b">Alternativa B</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'b']) ?>
 
@@ -426,7 +424,7 @@ if ($sucesso) : ?>
 
                         <textarea class="materialize-textarea" placeholder="Ex. teste" id="c" name="c"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra c'})"><?= $c ?></textarea>
-                        <label for="textarea1">Alternativa C</label>
+                        <label for="c">Alternativa C</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'c']) ?>
 
@@ -449,7 +447,7 @@ if ($sucesso) : ?>
 
                         <textarea id="c" name="c" class="materialize-textarea"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra c'})"></textarea>
-                        <label for="textarea1">Alternativa C</label>
+                        <label for="c">Alternativa C</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'c']) ?>
 
@@ -487,7 +485,7 @@ if ($sucesso) : ?>
 
                         <textarea class="materialize-textarea" placeholder="Ex. teste" id="d" name="d"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra d'})"><?= $d ?></textarea>
-                        <label for="textarea1">Alternativa D</label>
+                        <label for="d">Alternativa D</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'd']) ?>
 
@@ -510,7 +508,7 @@ if ($sucesso) : ?>
 
                         <textarea id="d" name="d" class="materialize-textarea"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra d'})"></textarea>
-                        <label for="textarea1">Alternativa D</label>
+                        <label for="d">Alternativa D</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'd']) ?>
 
@@ -546,7 +544,7 @@ if ($sucesso) : ?>
 
                         <textarea class="materialize-textarea" placeholder="Ex. teste" id="e" name="e"
                                   onclick="M.toast({html:  'Insira uma resposta para a letra e'})"><?= $e ?></textarea>
-                        <label for="textarea1">Alternativa E</label>
+                        <label for="e">Alternativa E</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'e']) ?>
 
@@ -569,7 +567,7 @@ if ($sucesso) : ?>
 
                         <textarea id="e" name="e" class="materialize-textarea"
                                   onclick="M.toast({html:  'Insira uma resposta para vai a letra e'})"></textarea>
-                        <label for="textarea1">Alternativa E</label>
+                        <label for="e">Alternativa E</label>
 
                         <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'e']) ?>
 

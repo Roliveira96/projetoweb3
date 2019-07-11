@@ -34,7 +34,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?= URL_RAIZ ?>">home</a></li>
                     <li><a href="<?= URL_RAIZ . 'login' ?>">login</a></li>
-                    <li><a href="<?= URL_RAIZ . 'quest_no_logado' ?>">questões</a></li>
+                    <li><a href="<?= URL_RAIZ . 'questao_nao_logado' ?>">questões</a></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +42,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a href="<?= URL_RAIZ ?>">home</a></li>
         <li><a href="<?= URL_RAIZ . 'login' ?>">login</a></li>
-        <li><a href="<?= URL_RAIZ . 'quest_no_logado' ?>">questões</a></li>
+        <li><a href="<?= URL_RAIZ . 'questao_nao_logado' ?>">questões</a></li>
     </ul>
 </header>
 <main>

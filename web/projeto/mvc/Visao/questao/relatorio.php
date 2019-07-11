@@ -1,4 +1,4 @@
-<h1 class="hide">cod_1999</h1>
+<h1 class="hide">relatorio</h1>
 
 
 <div class="col offset-s3 s6  offset-m3 m6 ">
@@ -8,26 +8,23 @@
                 <h4 class="center">Relatório de Questões</h4>
 
 
-                    <div class="col s12 m12 center">
+                <div class="col s12 m12 center">
 
 
-                            <form action="<?= URL_RAIZ . 'questao/relatorioPagina' ?>" method="get"
-                                  class="form-inline pull-left">
+                    <form action="<?= URL_RAIZ . 'questao/relatorioPagina' ?>" method="get"
+                          class="form-inline pull-left">
 
-                                <?php $this->incluirVisao('util/select.php', []) ?>
-                                <button type="submit" class="btn btn-primary center-block largura100">Filtrar</button>
+                        <?php $this->incluirVisao('util/select.php', []) ?>
+                        <button type="submit" class="btn btn-primary center-block largura100">Filtrar</button>
 
-                            </form>
+                    </form>
 
-                    </div>
+                </div>
 
 
                 <?php
 
-
-
-
-                if ( isset($relatorio['acertos']) && isset($relatorio['erros'])): ?>
+                if ((($relatorio['acertos']->getId() != null) && ($relatorio['erros']->getId() != null))): ?>
 
 
                     <?php
@@ -35,141 +32,220 @@
                     $erros = $relatorio['erros'];
                     ?>
 
+                    <?php if ($acertos->getQuantidadeAcertos($acertos->getId()) > 0) : ?>
 
-                    <div class="col s12 m6">
-                        <div class="card">
+                        <div class="col s12 m6">
+                            <div class="card">
 
-                            <div class="card-image">
-                                <img class="imagensQuest responsive-img "
-                                     src="<?= URL_IMG . $acertos->getImagem() ?>">
-                                <span class="card-title tituloCard"><?php echo $acertos->getTitulo() ?></span>
-                            </div>
-
-
-                            <div class="card-content">
-                                <p>
-                                    <?php echo $acertos->getDescricao() . "<hr>";
-                                    echo '<h5> A que povo mais errou! 😥 </h5>';
-                                    echo "<h5>Erros: " . $acertos->getQuantidadeErros($acertos->getId()) . "</h5>";
-                                    echo "<h5>Acertos: " . $acertos->getQuantidadeAcertos($acertos->getId()) . "</h5>";
-                                    echo "<h6>Dificuldade: " . $acertos->getDificuldade() . "</h6>";
-                                    ?>
-                                </p>
-                            </div>
-
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header"><i class="material-icons">edit</i>Responder
-                                    </div>
-                                    <div class="collapsible-body">
+                                <div class="card-image">
+                                    <img class="imagensQuest responsive-img "
+                                         src="<?= URL_IMG . $acertos->getImagem() ?>">
+                                    <span class="card-title tituloCard"><?php echo $acertos->getTitulo() ?></span>
+                                </div>
 
 
-                                        <form action="<?= URL_RAIZ . 'questao/responderPage' ?>" method="post">
+                                <div class="card-content">
+                                    <p>
+                                        <?php echo '<h5>' . $acertos->getDescricao() . "<h5><hr>";
+                                        echo '<h5> A que povo mais acertou! 😎 </h5>';
 
-                                            <input type="" name="id_quest" value="<?php echo $acertos->getId() ?>">
-                                            <label> Input vai ficar oculto</label>
+                                        echo "<h5>Acertos: " . $acertos->getQuantidadeAcertos($acertos->getId()) . "</h5>";
+
+                                        echo "<h5>Erros: " . $acertos->getQuantidadeErros($acertos->getId()) . "</h5>";
+                                        echo " <p class=" . $acertos->getDificuldade() . ">" . $acertos->getDificuldade() . '</p>';
+
+                                        ?>
+                                    </p>
+                                </div>
+                                <?php $usuario = \Framework\DW3Sessao::get("usuario");
+
+                                if ($usuario->getId() != $acertos->getUsuarioId()) : ?>
+                                    <?php if ($acertos->getEstaRespondida($usuario->getId(), $acertos->getId())) : ?>
+
+                                        <div class="card-content">
 
                                             <?php
-                                            $arrays = $acertos->buscarPorIdAlternativas($acertos->getId());
+                                            $array = $acertos->getEstaRespondida($usuario->getId(), $acertos->getId());
 
-                                            foreach ($arrays as $alternativa)  : ?>
+                                            if ($array['acertou']) {
+                                                echo "<p class='certo'>Você acertou esta questão <span class='emoj'>😉</span></p>";
+                                                echo "<p>Alternativa Correta:<b> " . $array['alternativa'] . "</b></p>";;
 
-                                                <p>
-                                                    <label>
-                                                        <input name="alternativaCorreta"
-                                                               value="<?php echo $alternativa ?>" type="radio"/>
-                                                        <span>  <?php echo $alternativa ?></span>
-                                                    </label>
-                                                </p>
-                                                <br>
-                                                <hr>
+                                            } else {
+                                                echo "<p>Você errou está questão <span class='emoj'>😐</span></p>";
+                                                echo "<p>Alternativa Correta:<b> " . $acertos->getAlternativaCorreta() . "</b></p>";
+                                                echo "<p>Alternativa que você selecionou:<b> " . $array['alternativa'] . "</b></p>";
 
-                                            <?php endforeach ?>
-                                            <div class="center">
-                                                <button class="btn waves-effect waves-light"
-                                                        name="action">Salvar
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
+                                            }
+                                            echo "Data da sua resposta: <b> " . date('d/m/Y', strtotime($array['data_resposta']));
+                                            echo "</b><p>Dificuldade:<b> " . $acertos->getDificuldade() . "</b></p>";
+                                            ?>
+                                        </div>
 
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
+                                    <?php else : ?>
+                                        <ul class="collapsible">
+                                            <li>
+                                                <div class="collapsible-header"><i class="material-icons">edit</i>Responder
+                                                </div>
+                                                <div class="collapsible-body">
 
 
-                    <div class="col s12 m6">
-                        <div class="card">
+                                                    <form action="<?= URL_RAIZ . 'questao/responderPagina' ?>"
+                                                          method="post">
 
-                            <div class="card-image">
-                                <img class="imagensQuest responsive-img "
-                                     src="<?= URL_IMG . $erros->getImagem() ?>">
-                                <span class="card-title tituloCard"><?php echo $erros->getTitulo() ?></span>
+                                                        <input type="hidden" name="id_quest"
+                                                               value="<?php echo $acertos->getId() ?>">
+
+
+                                                        <?php
+                                                        $arrays = $acertos->buscarPorIdAlternativas($acertos->getId());
+
+                                                        foreach ($arrays as $alternativa)  : ?>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input name="alternativaCorreta"
+                                                                           value="<?php echo $alternativa ?>"
+                                                                           type="radio"/>
+                                                                    <span>  <?php echo $alternativa ?></span>
+                                                                </label>
+                                                            </p>
+                                                            <br>
+                                                            <hr>
+
+                                                        <?php endforeach ?>
+                                                        <div class="center">
+                                                            <button class="btn waves-effect waves-light"
+                                                                    name="action">Salvar
+                                                                <i class="material-icons right">send</i>
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <div class="row"><h5 class="center">Sua questão!</h5></div>
+
+                                <?php endif; ?>
                             </div>
+                        </div>
+                    <?php endif; ?>
 
 
-                            <div class="card-content">
-                                <p>
-                                    <?php echo $erros->getDescricao() . "<hr>";
-                                    echo '<h5> A que povo mais acertou! 😎 </h5>';
+                    <?php if ($erros->getQuantidadeErros($erros->getId()) > 0) : ?>
+
+                        <div class="col s12 m6">
+                            <div class="card">
+
+                                <div class="card-image">
+                                    <img class="imagensQuest responsive-img "
+                                         src="<?= URL_IMG . $erros->getImagem() ?>">
+                                    <span class="card-title tituloCard"><?php echo $erros->getTitulo() ?></span>
+                                </div>
+
+
+                                <div class="card-content">
+
+                                    <?php echo '<h5>' . $erros->getDescricao() . "</h5><hr>";
+                                    echo '<h5> A que povo mais errou! 😥 </h5>';
                                     echo "<h5>Acertos: " . $erros->getQuantidadeAcertos($erros->getId()) . "</h5>";
                                     echo "<h5>Erros: " . $erros->getQuantidadeErros($erros->getId()) . "</h5>";
-                                    echo "<h6>Dificuldade: " . $erros->getDificuldade() . "</h6>";
-
-
+                                    echo " <p class=" . $erros->getDificuldade() . ">" . $erros->getDificuldade() . '</p>';
                                     ?>
-                                </p>
-                            </div>
-
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header"><i class="material-icons">edit</i>Responder
-                                    </div>
-                                    <div class="collapsible-body">
 
 
-                                        <form action="<?= URL_RAIZ . 'questao/responderPage' ?>" method="post">
+                                </div>
 
-                                            <input type="" name="id_quest" value="<?php echo $erros->getId() ?>">
-                                            <label> Input vai ficar oculto</label>
+                                <?php $usuario = \Framework\DW3Sessao::get("usuario");
+
+                                if ($usuario->getId() != $erros->getUsuarioId()) : ?>
+
+                                    <?php
+                                    if ($erros->getEstaRespondida($usuario->getId(), $erros->getId())) : ?>
+
+                                        <div class="card-content">
 
                                             <?php
-                                            $arrays = $erros->buscarPorIdAlternativas($erros->getId());
+                                            $array = $erros->getEstaRespondida($usuario->getId(), $erros->getId());
 
-                                            foreach ($arrays as $alternativa)  : ?>
 
-                                                <p>
-                                                    <label>
-                                                        <input name="alternativaCorreta"
-                                                               value="<?php echo $alternativa ?>" type="radio"/>
-                                                        <span>  <?php echo $alternativa ?></span>
-                                                    </label>
-                                                </p>
-                                                <br>
-                                                <hr>
+                                            if ($array['acertou']) {
+                                                echo "<p class='certo'>Você acertou esta questão <span class='emoj'>😉</span></p>";
+                                                echo "<p>Alternativa Correta:<b> " . $array['alternativa'] . "</b></p>";;
 
-                                            <?php endforeach ?>
-                                            <div class="center">
-                                                <button class="btn waves-effect waves-light" type="submit"
-                                                        name="action">Salvar
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
+                                            } else {
+                                                echo "<p>Você errou está questão <span class='emoj'>😐</span></p>";
+                                                echo "<p>Alternativa Correta:<b> " . $erros->getAlternativaCorreta() . "</b></p>";
+                                                echo "<p>Alternativa que você selecionou:<b> " . $array['alternativa'] . "</b></p>";
 
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
 
+                                            }
+                                            echo "Data da sua resposta: <b> " . date('d/m/Y ', strtotime($array['data_resposta']));
+                                            echo "</b><p>Dificuldade:<b> " . $erros->getDificuldade() . "</b></p>";
+                                            ?>
+                                        </div>
+
+                                    <?php else : ?>
+
+
+                                        <ul class="collapsible">
+                                            <li>
+                                                <div class="collapsible-header"><i class="material-icons">edit</i>Responder
+                                                </div>
+                                                <div class="collapsible-body">
+
+
+                                                    <form action="<?= URL_RAIZ . 'questao/responderPagina' ?>"
+                                                          method="post">
+
+                                                        <input type="hidden" name="id_quest"
+                                                               value="<?php echo $erros->getId() ?>">
+
+                                                        <?php
+                                                        $arrays = $erros->buscarPorIdAlternativas($erros->getId());
+
+                                                        foreach ($arrays as $alternativa)  : ?>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input name="alternativaCorreta"
+                                                                           value="<?php echo $alternativa ?>"
+                                                                           type="radio"/>
+                                                                    <span>  <?php echo $alternativa ?></span>
+                                                                </label>
+                                                            </p>
+                                                            <br>
+
+
+                                                        <?php endforeach ?>
+                                                        <div class="center">
+                                                            <button class="btn waves-effect waves-light" type="submit"
+                                                                    name="action">Salvar
+                                                                <i class="material-icons right">send</i>
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <h5 class="center">Sua questão!</h5>
+
+                                <?php endif; ?>
+
+                            </div>
                         </div>
-                    </div>
+
+                    <?php endif; ?>
 
 
                 <?php else: ?>
-
                     <div class="col s12 m12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
@@ -181,9 +257,7 @@
                         </div>
                     </div>
 
-
                 <?php endif; ?>
-
 
             </div>
 

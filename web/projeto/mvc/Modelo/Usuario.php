@@ -68,7 +68,7 @@ class Usuario extends Modelo
         $comando->execute();
         $objeto = null;
         $registro = $comando->fetch();
-        if ($registro) {
+        if ( $registro ) {
             $objeto = new Usuario(
                 $registro['nome'],
                 $registro['sobrenome'],
@@ -120,7 +120,7 @@ class Usuario extends Modelo
     public function getImagem()
     {
         $img = "$this->id .png";
-        if (!DW3ImagemUpload::existe($img)) {
+        if ( !DW3ImagemUpload::existe($img) ) {
             $img = 'padrao.png';
         }
         return $img;
@@ -130,7 +130,7 @@ class Usuario extends Modelo
     private function salvarImagem()
     {
 
-        if (DW3ImagemUpload::isValida($this->img)) {
+        if ( DW3ImagemUpload::isValida($this->img) ) {
             $nomeCompleto = PASTA_PUBLICO . "img/$this->id .png";
             DW3ImagemUpload::salvar($this->img, $nomeCompleto);
         }
@@ -140,34 +140,33 @@ class Usuario extends Modelo
     {
 
         //Verifica o tamanho do nome
-        if (!$this->verificaTamanhoString($this->nome, 2)) {
+        if ( !$this->verificaTamanhoString($this->nome, 2) ) {
             $this->insereError('nome');
         }
         //Verifica o tamanho do sobrenome
-        if (!$this->verificaTamanhoString($this->sobrenome, 4)) {
+        if ( !$this->verificaTamanhoString($this->sobrenome, 4) ) {
             $this->insereError('sobrenome');
         }
         //Verifica email
-        if (!preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $this->email)) {
+        if ( !preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $this->email) ) {
             $this->insereError('emailInvalido');
         }
         //Verifica Nome correto
-        if (!$this->verificaLetrasString($this->nome)) {
+        if ( !$this->verificaLetrasString($this->nome) ) {
             $this->insereError('nomeInvalido');
         }
         //Verifica Sobrenome Correto
-        if (!$this->verificaLetrasString($this->sobrenome)) {
+        if ( !$this->verificaLetrasString($this->sobrenome) ) {
             $this->insereError('sobrenomeInvalido');
         }
 
 
-
         //Verifica o tamanho da senha
-        if ($this->verificaTamanhoString($this->senha, 8)) {
+        if ( $this->verificaTamanhoString($this->senha, 8) ) {
 
 
             //Verificando se as senhas confere uma com a outra
-            if (!$this->senha == $this->senha1) {
+            if ( !$this->senha == $this->senha1 ) {
                 $this->insereError('senhaDif');
 
             }
@@ -179,14 +178,14 @@ class Usuario extends Modelo
         }
 
 
-        if (!$this->verificaTamanhoString($this->email, 8)) {
+        if ( !$this->verificaTamanhoString($this->email, 8) ) {
 
             $this->insereError('email');
 
         }
 
         $array = self::buscarEmail($this->email);
-        if ($array) {
+        if ( $array ) {
             $this->insereError('emailexistente');
         }
 
@@ -195,10 +194,15 @@ class Usuario extends Modelo
 
     private function verificaLetrasString($string)
     {
+        $resultado = preg_match('/^[a-zA-Zà-úÀ-ú ]*$/',$string , $teste);
+        print_r($resultado);
+        print_r( $teste);
+        if ( $teste ) {
 
-        if (preg_match('/^[a-zA-Z á]*$/', $string)) {
+
             return true;
         } else {
+
             return false;
         }
 

@@ -10,7 +10,7 @@ class TesteRaiz extends Teste
     public function testeAcessar()
     {
         $resposta = $this->get(URL_RAIZ);
-        $this->verificarContem($resposta, 'cod_1990');
+        $this->verificarContem($resposta, 'home');
 
 
 

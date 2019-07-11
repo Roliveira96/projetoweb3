@@ -55,9 +55,17 @@ class QuestaoControlador extends Controlador
 
     }
 
-    public function noLogado()
+    public function naoLogado()
     {
-        $this->visao('questao/noLogado.php');
+
+        $paginacao = $this->calcularPaginacao(null);
+
+
+        $this->visao('questao/naoLogado.php', [
+            'questoes' => $paginacao['questoes'],
+            'pagina' => $paginacao['pagina'],
+            'ultimaPagina' => $paginacao['ultimaPagina'],
+        ]);
     }
 
     public function criarPaginaQuestao()

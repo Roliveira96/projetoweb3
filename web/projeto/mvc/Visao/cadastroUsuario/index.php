@@ -1,4 +1,4 @@
-<h1 class="hide">cod_1991</h1>
+<h1 class="hide">cadastro_usuario</h1>
 
 
 <div class="row">
@@ -30,7 +30,7 @@
                                     <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value+' é uma belo nome'
                                 })" type="text" value="<?= $nome ?>"
                                            class="validate">
-                                    <label for="first_name">Primeiro nome</label>
+                                    <label for="nome">Nome</label>
 
                                     <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
 
@@ -43,7 +43,7 @@
                                 <div class="input-field col m6 s12">
                                     <input placeholder="Ex: João" id="nome" name="nome" onfocusout="M.toast({html: value+' é uma belo nome'
                                 })" type="text" class="validate">
-                                    <label for="first_name">Primeiro nome</label>
+                                    <label for="nome">Nome</label>
 
                                     <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'nome']) ?>
 
@@ -62,7 +62,7 @@
                                            value="<?= $sobrenome ?>"
                                            onfocusout="M.toast({html:  'Falta somente as senhas!'})"
                                            onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
-                                    <label for="last_name">Segundo nome</label>
+                                    <label for="sobrenome">Sobrenome</label>
                                     <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
 
                                 </div>
@@ -71,7 +71,7 @@
                                     <input placeholder="Ex. da Silva" name="sobrenome" id="sobrenome"
                                            onfocusout="M.toast({html:  'Falta somente as senhas!'})"
                                            onblur="validaString(sobrenome , 'sobrenome')" type="text" class="validate">
-                                    <label for="last_name">Segundo nome</label>
+                                    <label for="sobrenome">Sobrenome</label>
                                     <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'sobrenome']) ?>
 
                                 </div>
@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <input id="senha" name="senha" type="password"  onclick="M.toast({html:  'Lembrando a você, que a senha tem que ser maior que 8 digitos'})" class="validate">
-                                <label for="password">Senha</label>
+                                <label for="senha">Senha</label>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha']) ?>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
 
@@ -94,7 +94,7 @@
 
                             <div class="input-field col s12 m6">
                                 <input id="senha1" name="senha1" type="password" onclick="M.toast({html:  'E as senhas devem ser iguais para continuar!'})" class="validate">
-                                <label for="password">Repita a senha</label>
+                                <label for="senha1">Repita a senha</label>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'senha1']) ?>
                                 <?php $this->incluirVisao('util/formErroCadastro.php', ['campo' => 'conf']) ?>
 

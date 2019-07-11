@@ -10,7 +10,7 @@ class TesteLogin extends Teste
     public function testeAcessar()
     {
         $resposta = $this->get(URL_RAIZ . 'login');
-        $this->verificarContem($resposta, 'cod_1992');
+        $this->verificarContem($resposta, 'login');
 
 
     }

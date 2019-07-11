@@ -1,4 +1,4 @@
-<h1 class="hide">cod_1999</h1>
+<h1 class="hide">minhas_questoes</h1>
 
 <?php
 

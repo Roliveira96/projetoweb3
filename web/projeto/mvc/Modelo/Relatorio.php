@@ -63,8 +63,8 @@ class Relatorio extends Modelo
 
 
         $objetos = [
-            'acertos' => $erros,
-            'erros' => $acertos
+            'acertos' =>$acertos ,
+            'erros' => $erros
         ];
 
         return $objetos;

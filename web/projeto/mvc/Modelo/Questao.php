@@ -36,7 +36,7 @@ FROM questoes q JOIN usuarios u ON (q.id_usuario = u.id_usuario)
 where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
 ';
 
-  //  const BUSCAR_TODOS_MENOS_O_ID = 'select * from questoes where id_usuario and id_usuario not in  ( select id_usuario from respostas where id_usuario = ?) ';
+    //  const BUSCAR_TODOS_MENOS_O_ID = 'select * from questoes where id_usuario and id_usuario not in  ( select id_usuario from respostas where id_usuario = ?) ';
     const ACERTOS = 'select quantidade_acerto from questoes where id_questao = ?';
     const ERROS = 'select quantidade_erro from questoes where id_questao = ?';
     const BUSCAR_TODAS_AS_ALTERNATIVAS_by_id = ' select alternativa from alternativas where id_questao = ?';
@@ -136,6 +136,7 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
         }
 
     }
+
     public function atualizar()
     {
 
@@ -168,7 +169,6 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
         }
 
     }
-
 
 
     public static function contarTodos()
@@ -255,6 +255,7 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
             $comando->execute();
             DW3BancoDeDados::getPdo()->commit();
 
+
             return true;
         } else {
 
@@ -284,7 +285,7 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     }
 
 
-    function verificarSeQuetaoJaFoiRespondidaPeloUser($isUser, $isQuest)
+    public function verificarQuestaoRespondidaByUser($isUser, $isQuest)
     {
 
         $comando = DW3BancoDeDados::prepare(self::VERIFICA_SE_ESTA_RESPONDIDA);
@@ -297,7 +298,7 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
         return $registro;
     }
 
-    function verificarSeQuetaoJaFoiRespondida($isQuest)
+    private function verificarSeQuetaoJaFoiRespondida($isQuest)
     {
 
         $comando = DW3BancoDeDados::prepare(self::VERIFICA_SE_FOI_RESPONDIDA);
@@ -310,7 +311,7 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     }
 
 //Busca todas as questões menos as do User
-    public static function buscarPorId($limit = 4, $offset = 0, $id , $dificuldade)
+    public static function buscarPorId($limit = 4, $offset = 0, $id, $dificuldade)
     {
 
 
@@ -353,12 +354,11 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
             );
 
 
-            $estaRespondida = Questao::verificarSeQuetaoJaFoiRespondidaPeloUser($user->getId(), $objeto->getId());
+            $estaRespondida = Questao::verificarQuestaoRespondidaByUser($user->getId(), $objeto->getId());
 
             $objeto->setAcertos($registro['quantidade_acerto']);
             $objeto->setErros($registro['quantidade_erro']);
             $objeto->setAtributosQuestRespondida($estaRespondida);
-//            print_r($estaRespondida);
             array_push($objetos, $objeto);
         }
 
@@ -412,7 +412,6 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
             $objeto->setAcertos($registro['quantidade_acerto']);
             $objeto->setErros($registro['quantidade_erro']);
             $objeto->setAtributosQuestRespondida($estaRespondida);
-//            print_r($estaRespondida);
             array_push($objetos, $objeto);
         }
 
@@ -439,25 +438,6 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     }
 
 
-
-
-//
-//    public static function buscaTodasAsQuestoesRespondidas($id_user)
-//    {
-//
-//
-//        $comando = DW3BancoDeDados::prepare(self::BUSCA_TODAS_AS_QUESTOES_RESPONDIDAS);
-//        $comando->bindValue(1, $id_user, PDO::PARAM_INT);
-//        $comando->bindValue(2, $id_user, PDO::PARAM_INT);
-//        $comando->execute();
-//
-//        $registros = $comando->fetchAll();
-//        $arrayReturn = [];
-//        foreach ($registros as $registro) {
-//        }
-//
-//
-//    }
 
     public static function buscarTodos($limit = 4, $offset = 0)
     {
@@ -515,16 +495,12 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     }
 
 
-
-
-
     public function getImagem()
     {
         $img = "$this->id questao.png";
         if (!DW3ImagemUpload::existe($img)) {
             $img = 'padrao.png';
         }
-
 
         return $img;
     }
@@ -661,7 +637,8 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     }
 
 
-    public  function deletarById($id){
+    public function deletarById($id)
+    {
 
         $comando = DW3BancoDeDados::prepare(self::DELETAR_ALTERNATIVAS);
         $comando->bindValue(1, $id, PDO::PARAM_INT);
@@ -693,6 +670,11 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
         $this->acertos = $acertos;
     }
 
+    public function getAcertos()
+    {
+        return $this->acertos;
+    }
+
     public function setAtributosQuestRespondida($atibutosDaQuestRespondida)
     {
         $this->atributosAlternativaRespondida = $atibutosDaQuestRespondida;
@@ -703,17 +685,24 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
         return $this->atributosAlternativaRespondida;
     }
 
+    public  function  getEstaRespondida($idUsuario , $idQuestao){
+       $respondida = Questao::verificarQuestaoRespondidaByUser($idUsuario, $idQuestao);
+
+
+       return $respondida;
+//       if($respondida){
+//           return true;
+//       }else{
+//           return false;
+//
+//       }
+
+    }
+
     public function getErros()
     {
         return $this->erros;
     }
-
-
-    public function getAcertos()
-    {
-        return $this->acertos;
-    }
-
 
     public function setErros($erros)
     {
@@ -755,5 +744,11 @@ where q.id_usuario = ? ORDER BY q.id_questao desc LIMIT ? OFFSET ?;
     {
         return $this->alternativas;
     }
+
+    public function getUsuarioId()
+    {
+        return $this->usuarioId;
+    }
+
 
 }

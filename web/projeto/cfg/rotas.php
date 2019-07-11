@@ -32,8 +32,8 @@ $rotas = [
         'GET' => '\Controlador\QuestaoControlador#index',
     ],
 
-    '/questao_no_logado' => [
-        'GET' => '\Controlador\QuestaoControlador#noLogado',
+    '/questao_nao_logado' => [
+        'GET' => '\Controlador\QuestaoControlador#naoLogado',
     ],
 
     '/questao/criarPagina' => [

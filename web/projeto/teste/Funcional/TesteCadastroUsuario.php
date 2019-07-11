@@ -10,16 +10,10 @@ class TesteCadastroUsuario extends Teste
     public function testeAcessar()
     {
         $resposta = $this->get(URL_RAIZ . 'cadastroUsuario');
-        $this->verificarContem($resposta, 'cod_1991');
+        $this->verificarContem($resposta, 'cadastro_usuario');
 
 
     }
 
-    public function testeAcessar1()
-    {
-        $resposta = $this->get(URL_RAIZ . 'cadastroUsuario');
-        $this->verificarNaoContem($resposta, 'cod_1992');
 
-
-    }
 }

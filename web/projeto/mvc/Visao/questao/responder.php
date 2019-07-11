@@ -1,4 +1,4 @@
-<h1 class="hide">cod_1999</h1>
+<h1 class="hide">responder</h1>
 
 <?php if (isset($flash)) : ?>
     <?php if (isset($valores)) : ?>
@@ -27,6 +27,7 @@
 <div class="col offset-s3 s6  offset-m3 m6 ">
     <div class="card  darken-1 z-depth-3">
         <div class="card-content">
+
             <div class="row">
                 <div class="col s12 m12 center"><h3>Responde se for capaz! <span class="emoj">😎 </span></h3></div>
             </div>
@@ -46,19 +47,15 @@
 
 
             <div class="row">
-                <div class="row">
 
 
-                    <?php
-
-
-                    if ($questoes) : ?>
+                    <?php if ($questoes) : ?>
                     <?php foreach ($questoes
 
                     as $questao): ?>
 
 
-                    <div class="col s12 m6 ">
+                    <div class="col s12 m6 corpo ">
                         <?php if ($questao->getAtributosQuestRespondida()) {
                             echo '<div class="card ">';
                         } else {
@@ -168,6 +165,7 @@
                 </div>
 
                 <?php endforeach ?>
+
                 <?php else: ?>
 
                     <div class="col s12 m12">
@@ -184,22 +182,19 @@
 
                 <?php endif; ?>
 
-
-            </div>
-
         </div>
 
         <div class="row center">
             <?php if ($pagina > 1) : ?>
-                </a> <img class="icons-buttons" src="<?= URL_IMG . 'icons/esquerda.svg' ?>">
+                 <img class="icons-buttons" src="<?= URL_IMG . 'icons/esquerda.svg' ?>">
 
                 <a href="<?= URL_RAIZ . 'questao/responderPagina?p=' . ($pagina - 1) ?>" class="btn btn-default">Página
                     anterior</a>
             <?php endif ?>
             <?php if ($pagina < $ultimaPagina) : ?>
                 <a href="<?= URL_RAIZ . 'questao/responderPagina?p=' . ($pagina + 1) ?>" class="btn btn-default">Próxima
-                    página
-                </a> <img class="icons-buttons" src="<?= URL_IMG . 'icons/direita.svg' ?>">
+                    página</a>
+                 <img class="icons-buttons" src="<?= URL_IMG . 'icons/direita.svg' ?>">
 
             <?php endif ?>
         </div>

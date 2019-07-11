@@ -1,4 +1,4 @@
-<h1 class="hide">recentes</h1>
+<h1 class="hide">questoes_nao_logado</h1>
 
 
 <div class="col offset-s3 s6  offset-m3 m6 ">
@@ -57,18 +57,22 @@
 
             </div>
 
-            <div class="row center">
+        </div>
+        <div class="row center">
+            <div class="row">
                 <?php if ($pagina > 1) : ?>
+
                     <img class="icons-buttons" src="<?= URL_IMG . 'icons/esquerda.svg' ?>">
-                    <a href="<?= URL_RAIZ . 'questao?p=' . ($pagina - 1) ?>" class="btn btn-default">Página anterior</a>
+                    <a href="<?= URL_RAIZ . 'questao_nao_logado?p=' . ($pagina - 1) ?>" class="btn btn-default">Página
+                        anterior</a>
                 <?php endif ?>
                 <?php if ($pagina < $ultimaPagina) : ?>
-                    <a href="<?= URL_RAIZ . 'questao?p=' . ($pagina + 1) ?>" class="btn btn-default">Próxima página</a>
+                    <a href="<?= URL_RAIZ . 'questao_nao_logado?p=' . ($pagina + 1) ?>" class="btn btn-default">Próxima
+                        página</a>
                     <img class="icons-buttons" src="<?= URL_IMG . 'icons/direita.svg' ?>">
-
                 <?php endif ?>
             </div>
         </div>
     </div>
-
 </div>
+
