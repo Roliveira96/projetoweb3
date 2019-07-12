@@ -41,7 +41,8 @@ class TesteLogin extends Teste
             'email' => 'joao@teste.com',
             'senha' => '123'
         ]);
-        $resposta = $this->delete(URL_RAIZ . 'login');
+
+        $resposta = $this->delete(URL_RAIZ );
         $this->verificarRedirecionar($resposta, URL_RAIZ . 'login');
         $this->verificar(DW3Sessao::get('usuario') == null);
     }

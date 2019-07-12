@@ -23,7 +23,7 @@ class DW3Aplicacao
     {
         $this->roteador->interpretarRota();
         if (!$this->roteador->getResultado()) {
-            echo 'Rota não encontrada.';
+            echo 'Ops, Rota não encontrada.';
             return false;
         }
         return true;

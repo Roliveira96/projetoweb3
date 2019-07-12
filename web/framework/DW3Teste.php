@@ -67,7 +67,7 @@ abstract class DW3Teste
 
     protected function delete($url, $dados = [])
     {
-        return $this->requisicao('DELETE', $url, $dados);
+              return $this->requisicao('DELETE', $url, $dados);
     }
 
     protected function patch($url, $dados = [])
